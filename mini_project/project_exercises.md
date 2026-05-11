@@ -1,24 +1,59 @@
+## Project description
+Using ContextAgent as a seed paper, we seek out to improve proactive agents. Proactive agents being LLM-based systems that interact with the user and the environment not only when prompted, like it is usually done, but rather initiate both information gatherting and communication from the agent side.
+
 ## Exercise 0: Innovation opportunities
 Is all about innovation opportunities for you this semester.
 
 Look at the semester project description in the study regulations for your education. See if your topic is related to one or more of the following trends and forces:
 
 Do you see trends in technology that might be related to your topic?
+Yes:
+- LLMs are increasingly popular. Both the effort and money invested into them from academia and industry, as well as having increasingly growing user bases.
+- LLM-based agents, like Claude Code/Cowork, Codex, OpenClaw, etc, just hit the scene
+- We are going through a period of explosion in this niche, and many people/entities are trying to uncover the next evolution within this paradigm.
+
 Do you see trends in legislation, society, culture, and economy that might be linked to your topic?
+- Legislation:
+    - EU AI Act
+    - US banning gpu exports to China
+- Society:
+    - 
+- Culture:
+    - Inmediate rejection of ai-generated art
+- Economy
+    - More and more companies expect ai-assisted workers to be increasingly productive, forcing the situation through massive layoffs
+
 Do you see new forces in industry and markets, new needs and demands, new products, and new conditions relevant to your topic?
+- Yes, the clearest example of which is OpenClaw. It's a general purpose executive assistant application that can perform work in the background. Even at it's current barely developed stage, it has taken the enthusiast community by storm, to the point of the creator being hired by Anthropic.
+
 How can such trends and forces create innovation opportunities in your project?
+- TODO: demand-pull, technologu push but without saying it cos its too early in the lectures
 
 ## Exercise 1: Innovation in your project
 Exercise 1 is a follow-up to Exercise 0. In this exercise, we will consider your semester project:
 
 What problem are you working on?
 Explain what type of innovation you aim for (Table 1.1 in Essence).
+Current LLM-based AI systems only work as a response of an user's inquiry
+
 What will be the keystones in your design? What will make your design stand out?
-Who will benefit from it? What value will you create?
+Preliminary solutions to this problem involve running agents in a loop, constantly consuming resources. Our design prioritices optimization techniques over everything else, making the system much cheaper
+
+Who will benefit from it? What value will you create? 
+Current LLM users, and well as those who would like to use LLMs but don't like prompt-based interactions. The value the project creates is enjoying the benefits of LLMs without the effort from a human initiating interactions 
+
 Where will it be used? How will it create change?
 Characterize your problem or solution challenges in terms of volatility, uncertainty, complexity, and ambiguity (Section 1.2 in Essence).
+- Volatity: the LLM landscape is changing very rapidly, and a well-stablished player in the industry might release a significantly stronger product/solution before us
+- Uncertainty: we don't know wether the planned optimization techniques will actually improve the performance of our system, since this is a niche that existing literature does not cover well.
+- Complexity: TODO complete
+- Ambiguity: TODO complete
+
 Do you consider your project to be mainly demand-pull or technology-push? (Section 1.2 in Essence).
+I consider our project technology-push. While it is true that a very small and vocal customer base does demand proactive AI systems, in the grand scheme of things LLMs are a new technology that enables very many possibilities and we are exploring one of them by challenging the established paradigm for llm-user interaction.
+
 Will roles be relevant? How? When? What are the pros and cons of roles?
+TODO complete, but theme is that while all roles are important to bring a project to completion, the reasearch nature of ours in a domain that is not very well explored or understood, the child and responder are the most important, as they embody both the capability of coming up with novel ideas as well as being able to implement them.
 
 ## Exercise 2: Start on your PSC
 Use the results from Exercise 1 and the PSC Template in this exercise.
@@ -29,11 +64,18 @@ Discuss and choose Fulcrum (Sections 4.1 – 4.5). Explain your choice.
 Based on your Fulcrum, broadly outline a strategy for your work on the problem and its solution.
 Begin with the key cells in the PSC based on your strategy. Keep it concise.
 
+TODO complete
+Mission fulcrum, since the project is based on quantitative improvements in well-defined characteristics of the problem and its environment. Also mention that it looks particularly well suited to incremental research. 
+
 ## Exercise 3: Problem Scenarios
 Use the results from Exercise 2 and the PSC Template in this exercise.
 
 Describe the context type of your project as defined in Table 6.1.
+I would describe the context of our project to be *complex*. Rooted in deep learning, the building blocks of our systems are black boxes, and interpretability of their inner workings requires desproportionate effort. Thus, an approach where we develop a mental model, form a hypothesis, interact with it as an experiment, report the response and adjust our mental model, is the most appropriate. Probe, sense, and respond.
+
 Develop axes for Problem Scenarios as described in Section 6.3 (Tables 6.2, 6.3, 6.4, and 6.5). Choose two axes for the Problem Scenarios.
+
+
 Develop Problem Scenarios as illustrated in Figure 6.1. Explain the problem found in each quadrant.
 Choose one problem to work with from now on. You can choose one quadrant or combine several if relevant. Express this problem in one sentence in the PSC problem cell (Section 3.1).
 Outline how this problem manifests itself in the PSC manifestations cell (Section 3.3).
@@ -124,4 +166,3 @@ Add references to what you are talking about (code, slides, book pages, papers, 
 - PSC is an ongoing representation of what we are doing and how we understand the project
 - Each cell can be filled in using whatever method, from just a naive thinking process to a formal and fully featured tool/process for finding the answert/content for it.
 ## Course notes
-
