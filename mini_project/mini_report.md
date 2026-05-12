@@ -1,617 +1,553 @@
-# Proactive LLM Agents: A Problem-Solution Canvas Analysis
+# Software Innovation mini-project
 
-**Group Members**
-- [Member 1, Study Program]
-- [Member 2, Study Program]
-- [Member 3, Study Program]
+**Author**: Beltrán Aceves Gil
 
-**Date:** [Submission Date]
+**Study program**: CS-IT-09
+
+**Date:** 12/05/2026
 
 ---
 
 ## Table of Contents
 
-1. [Abstract](#abstract)
-2. [Introduction](#1-introduction)
-3. [Innovation Opportunities](#2-innovation-opportunities)
-4. [Innovation in our Project](#3-innovation-in-our-project)
-5. [Selecting a Fulcrum](#4-selecting-a-fulcrum)
-6. [Problem Scenarios](#5-problem-scenarios)
-7. [Leverage Scenarios](#6-leverage-scenarios)
-8. [Solution Scenarios](#7-solution-scenarios)
-9. [Horizon](#8-horizon)
-10. [Outer Environment](#9-outer-environment)
-11. [Inner Environment](#10-inner-environment)
-12. [Evolvability and Innovation Theory](#11-evolvability-and-innovation-theory)
-13. [Tactics, Manifestations, and Capabilities](#12-tactics-manifestations-and-capabilities)
-14. [Merit, Dependencies and Robustness](#13-merit-dependencies-and-robustness)
-15. [Conclusion](#conclusion)
-16. [References](#references)
-17. [Appendices](#appendices)
+0.
+1.
+2.
 
 ---
 
-## Abstract
+## 0. Project Description
 
-This mini-project applies the Problem-Solution Canvas (PSC) methodology to our semester project focused on developing and optimizing proactive LLM agents. Using ContextAgent as a seed paper, we investigate how optimization techniques such as quantization, pruning, and knowledge distillation can improve the performance and efficiency of proactive agents—systems capable of initiating information gathering and communication without explicit user prompts.
+This mini-project makes use of our semester project as the domain to use the Problem-Solution Canvas.
 
-Through structured application of the PSC framework, this report documents our understanding of the innovation landscape, problem articulation, solution approaches, and strategic considerations for advancing proactive agent technology.
+We seek out to improve proactive agents, LLM-based systems that interact with their users and the environment not only when directly prompted, but rather are able to initiate both information gathering and communication from the agent's side.
 
----
-
-## 1. Introduction
-
-Proactive agents represent a departure from traditional reactive LLM-based systems. Rather than responding solely to user queries, these systems initiate interactions and information gathering autonomously. This report documents our application of the Problem-Solution Canvas—a visual inquiry tool for understanding complex innovation challenges—to our semester project on optimizing proactive LLM agents.
-
-The PSC methodology, as developed by Ivan Friborg and colleagues, provides a structured approach to synthesizing multiple perspectives on problems, solutions, and their contexts. By applying this framework systematically, we aim to deepen our engagement with the syllabus concepts while clarifying the strategic dimensions of our project.
+Implementations of this emerging paradigm have recently started to appear, but rely on keeping the agent in a loop, constantly consuming resources, which we aim to reduce by trying to heavily optimize the process.
 
 ---
 
-## 2. Innovation Opportunities
+## 1. Innovation Opportunities
+### 1.1 Do you see trends in technology that might be related to your topic?
 
-### Technological Trends
+- LLMs are incresingly popular. Both the effort and capital invested into them from both academia and industry keeps growing, as well as their user bases.
+TODO: add chart for AI funding
+- LLM-based agents like [Claude Code](https://code.claude.com/docs/en/overview), [OpenClaw](https://openclaw.ai/) or [Codex](https://openai.com/codex/) have amassed vocal and enthusiastic communities, stimulating further development in this paradigm.
+TODO: add chart with gh stars for openclaw
+- We are going through a period of explotion in this domain, and many companies and institutions are trying to uncover the next evolution in this space.
 
-**LLM Proliferation and Investment**
-The AI landscape is experiencing explosive growth in both academic and industrial investment. Major organizations continue to develop increasingly capable language models, expanding their capabilities and user bases.
+### 1.2 Do you see trends in legislation, society, culture, and economy that might be linked to your topic
 
-**Emergence of LLM-Based Agents**
-The introduction of systems like Claude Code/Cowork, Codex, and others has catalyzed interest in autonomous agent systems. These systems represent a new frontier in LLM applications, moving beyond single-turn interactions toward multi-turn, context-aware autonomy.
+- **Legislation**: regulations like the EU AI Act signal increasing governance of AI systems. Export restrictions (e.g., GPU exports to China) reflect geopolitical concerns around AI capability distribution.
+- **Society**: we can already observe people getting divided in groups depending on their stance towards generative ai. Two main axes stand out: 
+   - Those who believe LLMs can achieve all that is being promised and those who don't.
+   - Those who regard the impact of generative ai as something positive and those who find it negative.
+- **Economy**: organizations increasingly expect AI-assisted systems to deliver productivity gains. This economic demand is driving both adoption and quality expectations for AI tools. It is also functioning as a convenient smokescreen for layoffs and restructuring of company hierarchies and salary expectations.
+- **Cultural**: computer-aided art tools have been widely accepted, but AI-generated creative content (music, video, paintings, writing) is largely rejected as inauthentic and not considered art by the vast majority.
 
-**Research-Driven Exploration**
-The agent space remains relatively immature, with numerous organizations competing to define the next evolution of the paradigm. This creates significant opportunities for novel approaches and optimizations.
+### 1.3 Do you see new forces in industry and markets, new needs and demands, new products, and new conditions relevant to you topic?
+Yes, the clearest examples of which are projects like OpenClaw. It's a general purpose executive assistant application that can perform work in the background. Even at it's current barely developed stage, it has taken the enthusiast community by storm, to the point of the creator being hired by Anthropic. 
+OpenClaw illustrates the combiation of multiple forces in the domain: agent architectures, tool calling, context management, MCP protocols, open-source momentum, growing competition from major players like Anthropic and OpenAI acquiring emerging projects, and the fundamental market demand for alternative interaction models beyond static prompting.
 
-### Societal, Economic, and Regulatory Trends
 
-**Legislative Response**
-Regulations like the EU AI Act signal increasing governance of AI systems. Export restrictions (e.g., GPU exports to China) reflect geopolitical concerns around AI capability distribution.
+### 1.4 How can such trends and forces create innovation opportunities in your project?
 
-**Economic Pressures**
-Organizations increasingly expect AI-assisted systems to deliver productivity gains. This economic demand is driving both adoption and quality expectations for AI tools.
-
-**Cultural Dynamics**
-Society exhibits mixed reactions to AI-generated content, creating both barriers and opportunities for novel applications that augment rather than replace human work.
-
-### Market and Industrial Forces
-
-**Practical Executive Automation**
-Projects like OpenClaw demonstrate significant market enthusiasm for general-purpose autonomous assistant applications. Even in early stages, such systems have garnered widespread attention within tech communities.
-
-### Innovation Opportunities in Our Project
-
-Our project addresses the gap between current capabilities and user expectations:
-
-- **Technology Push:** We leverage recent advances in optimization techniques and LLM infrastructure to enable more efficient proactive agents.
-- **Market Pull:** Users and organizations seek more natural, less effort-intensive interaction models with AI systems.
-- **Innovation Type:** We pursue incremental innovation by applying established optimization techniques to an emerging problem domain.
+An environment like this is full of players building different solutions. By bouncing off their ideas we can explore new directions. The open-source community is a great enabler, as it produces excellent tools for everyone to build upon, which makes it practical for us to iterate on otherwise unatainable projects.
 
 ---
 
-## 3. Innovation in our project
+## 2. Innovation in our project
 
-### Core Problem Statement
+### 2.1 What problem are you working on?
 
-Current LLM-based AI systems operate exclusively in reactive mode, requiring explicit user initiation of every interaction. Proactive systems face significant barriers related to resource consumption, reliability, and user trust. Our project addresses efficiency limitations that currently make large-scale proactive agent deployment impractical.
+Existing proactive LLM agents (like ContextAgent) are too expensive to deploy at scale. They need constant resources to keep running, constantly scanning for opportunities to act. This computational cost makes them impractical for most use cases, as they only make sense where the investment is clearly justified.
 
-### Innovation Type
+### 2.2 What type of digital innovation are we pursuing?
 
-Following Essence (Ref. Table 1.1), we classify this as **Incremental Innovation** focused on:
-- **Performance improvement:** Reducing computational costs through quantization, pruning, and knowledge distillation
-- **Efficiency gains:** Enabling longer operational horizons on constrained hardware
-- **Cost reduction:** Making proactive agent deployment economically viable
+Following Table 1.1 in Essence, we clasify this as **Position Innovation**. We're taking existing proactive agent technology and making it cost-efficient by dramatically reducing its computational demands.
 
-### Design Keystones
+Using optimization techniques like quantization, pruning, and knowledge distillation, we can take expensive proactive agents and make them economically viable. This enables proactive agents in scenarios where they were previously too costly, unlocking value by bringing existing solutions into new economic contexts.
 
-**Optimization-First Approach**
-Rather than building generic proactive agent platforms, we prioritize efficiency optimization as the foundational design principle. This distinguishes our approach: we accept higher implementation complexity to achieve lower operational costs.
+### 2.3 What will be the keystones in your design? What will make your design stand out?
 
-**Technique-Agnostic Architecture**
-Our design accommodates multiple optimization techniques, allowing flexibility as research advances and new methods emerge.
+Our design targets the HuggingFace Transformers library, the most widely used library for LLMs. By implementing our optimization techniques at this abstraction level, we can translate the improvements for most open-source LLMs, not just ContextAgent. This way, our project becomes a multiplying force in an ecosystem, rather than an incremental improvement in a particular situation.
 
-### Value Creation and Beneficiaries
+### 2.4 Who will benefit from it? What value will you create?
 
-**Primary Beneficiaries:**
-- Current LLM users seeking less prompt-dependent interactions
+Benefitiaries:
+- Current LLM users seeking alternative ways to interact with their systems
 - Organizations deploying proactive AI systems at scale
-- Users with accessibility needs who benefit from agent-initiated communication
+- Users with accessibility needs who benefit from agent-initiated (hands-free) communication
 
-**Value Propositions:**
+Value propositions
 - Enjoy LLM capabilities without continuous human-initiated prompts
-- Deploy autonomous systems within resource constraints
-- Reduce operational costs for agent-based services
+- Deploy proactive systems in environments with more constrained operating margins
+- Enable a new kind of LLM-based product within the proactive paradigm, like personal assistants
 
-### Application Context and Impact
+### 2.5 Where will it be used? How will it create change? Characterize your problem or solution challenges in terms of volatility, uncertainty, complexity and ambiguity (Section 1.2 in Essence)
 
-**Where:** Cloud services, on-device systems, resource-constrained environments
+The improved proactive agent can be deployed in affordable cloud services, on-device systems, or resource-constrained environments. 
 
-**Impact:** By demonstrating viable optimization pathways, we create proof points that proactive agents can be economically deployed, potentially catalyzing broader adoption of autonomous agent systems.
+The biggest change it could enable would be to popularize a different way of interacting with LLMs by moving away from the prompt-based paradigm into a more implicit type of interaction in which the LLM is ready for us at all times by being proactive.
 
-### VUCA Analysis
+**VUCA**:
 
 | Dimension | Assessment | Implications |
-|-----------|-----------|---|
+|-----------|-----------|---| 
 | **Volatility** | LLM landscape evolves rapidly; new models and architectures emerge frequently | Must design for flexibility; avoid tight coupling to specific model architectures |
-| **Uncertainty** | Optimization techniques' effectiveness on proactive tasks remains empirically unvalidated | Approach must be experimentally rigorous with clear success criteria |
-| **Complexity** | Proactive agent behavior emerges from multi-component interactions; optimization effects may be nonlinear | Require systematic decomposition and measurement frameworks |
-| **Ambiguity** | User expectations for "proactive" behavior are poorly defined and context-dependent | Engage stakeholders early to clarify behavioral requirements |
+| **Uncertainty** | Optimization techniques' effectiveness on proactive tasks remains empirically unvalidated | Approach must be focused on experiments with clear success criteria |
+| **Complexity** | Proactive agent behavior emerges from multi-component interactions; optimization effects may be nonlinear | Build and test the system in an incremental manner, ablating components and interactions when neccesary |
+| **Ambiguity** | User expectations for "proactive" behavior are poorly defined and context-dependent | Keep the use cases open for new scenarios instead of locking into a particular one |
 
-### Technology-Push Characterization
+### 2.6 Do you consider your project to be mainly demand-pull or technology-push? (Section 1.2 in Essence)
 
-We consider our project **primarily technology-push** (Essence, Section 1.2):
+We consider our project **primarily technology-push**. While a small but vocal community demands proactive AI systems, mainstream adoption/demand remains a question. We are mostly pursuing a new oportunity emerging from new technologies.
 
-- While a small but vocal community demands proactive AI systems, mainstream adoption remains limited
-- LLMs are emerging technology enabling many possibilities; we explore one unexplored pathway
-- We challenge established interaction paradigms through technical innovation
+### 2.7 Will roles be relevant? How? When? What are the pros and cons of roles?
+
+In research-heavy work like ours, the **Child** and **Responder** roles matter most, while the **Challenger** and **Anchor** take a step back. We need someone generating new ideas and someone actually building and testing them. The other roles help, but when you're exploring unknown territory without a focus on a final product or future oportunities, the two latter roles derive less value.
+
+While Essence presents roles as a somewhat fluid element someone embodies, there's a tendency for people to shoehorn themselves if they are not careful. Roles help teams set and meet expectations with each other, and help manage both the project and their members, but the specific roles and who embodies each one must not be final decisions.
 
 ---
 
-## 4. Selecting a Fulcrum
+## 3. Selecting a Fulcrum
 
-### Mission-Driven Approach
+We opted to choose **Mission** as our PSC Fulcrum because it very clearly aligned with the incremental research perspective our project would follow (Essence, page 69):
 
-**Rationale:** We selected **Mission** as our PSC Fulcrum (Sections 4.1–4.5 in Essence) because:
+- **Quantifiable Objectives** and **Measurable Environment**: Our project involves well-defined performance metrics (latency, token throughput, model size reduction, F1 scores), and the optimization landscape provides clear benchmarks (GLUE scores, inference time, memory usage)
+- **Incremental Progress:** Mission-driven approaches naturally accommodate the hypothesis-test-refine cycle required in research, which we make use of by employing ContextAgent as our starting point
+- **Alignment:** Our focus on optimization techniques creates clear missions: "Reduce model size by X% while maintaining Y% accuracy"
 
-1. **Quantifiable Objectives:** Our project involves well-defined performance metrics (latency, token throughput, model size reduction)
-2. **Measurable Environment:** The optimization landscape provides clear benchmarks (GLUE scores, inference time, memory usage)
-3. **Incremental Progress:** Mission-driven approaches naturally accommodate the hypothesis-test-refine cycle required in research
-4. **Alignment:** Our focus on optimization techniques creates clear missions: "Reduce model size by X% while maintaining Y% accuracy"
+**Strategy**:
 
-### Broad Strategy
+- Establish a baseline:
+   - Profile ContextAgent under standard conditions
+   - Define success metrics (inference latency, token throughput, accuracy)
+   - Establish reproducible evaluation methodology
 
-**Phase 1: Baseline Establishment**
-- Profile ContextAgent under standard conditions
-- Define success metrics (inference latency, token throughput, accuracy)
-- Establish reproducible evaluation methodology
+- Apply optimizations:
+   - Implement and test quantization, pruning, semantic steering, etc
+   - Measure effects on baseline metrics
 
-**Phase 2: Optimization Application**
-- Apply quantization techniques systematically
-- Implement and test pruning approaches
-- Explore knowledge distillation pathways
-- Measure effects on baseline metrics
+- Analysis and iteration:
+   - Identify optimal technique combinations
+   - Document trade-offs (accuracy vs. speed, complexity vs. efficiency)
+   - Refine our approach based on results
 
-**Phase 3: Analysis and Iteration**
-- Identify optimal technique combinations
-- Document tradeoffs (accuracy vs. speed, complexity vs. efficiency)
-- Refine approach based on results
-
-**Phase 4: Synthesis**
-- Formulate generalizable principles for proactive agent optimization
-- Develop recommendations for deployment scenarios
+- Synthesis:
+   - Formulate principles for general proactive agent optimization
+   - Develop recommendations for deployment scenarios
 
 ### Initial PSC Canvas
+As outlined in Essence (Table 4.6), we start our PSC by filling in the *tactics* abstraction and the *learn* activity:
 
-**Fulcrum:** Mission—Achieve measurable performance improvements in proactive LLM agent efficiency through systematic optimization
+TODO insert psc_mini screenshot 
+<!-- 
+**Mission:** Achieve measurable performance improvements in proactive LLM agent efficiency through systematic optimization
 
-**Problem** (Placeholder): ContextAgent and similar proactive systems suffer from high resource consumption, limiting practical deployment
+**Manifestations** (what makes the problem tangible): 
+- High computational cost per agent operation
+- Continuous resource consumption while agents wait for opportunities to act
+- Economic barriers to broad deployment
 
-**Outer Environment** (Placeholder): Rapidly evolving LLM infrastructure, competing agent platforms, computational resource constraints
+**Capabilities** (designed features addressing manifestations):
+- Efficient context management
+- Optimized token processing  
+- Low-latency decision making
 
-**Inner Environment** (Placeholder): ContextAgent architecture, optimization component library, evaluation framework, metrics collection system
+**Merit** (value offered and limitations):
+- *Value:* Proactive agents become economically viable for new deployment scenarios; ecosystem-wide optimization benefits
+- *Reservation:* Optimization may degrade context understanding below acceptable thresholds; technique effectiveness on proactive tasks remains empirically unvalidated
+- *Rebuttal:* Sequential measurement and ablation studies provide strong empirical foundation for understanding tradeoffs
 
-**Capabilities** (Placeholder): Efficient context management, optimized token processing, low-latency decision making
+**Horizon** (where outcomes lead; strategic hypotheses for the future):
 
-**Leverage Points** (Placeholder): Model quantization, architecture pruning, knowledge distillation, batching strategies
+The horizon links this project's immediate results to the team's long-term direction. We formulate three core hypotheses:
+
+**Problem Hypothesis (Generic & Reusable):**
+Computational efficiency is a fundamental barrier to adopting proactive LLM agents across diverse deployment contexts. This problem is generic—it applies to all proactive agent systems, not just ContextAgent, and will be relevant as the proactive agent paradigm evolves. Success criteria: adoption by a significant class of organizations currently unable to deploy proactive systems due to cost.
+
+**Leverage Hypothesis (Strategic for Current & Future Projects):**
+Optimization techniques (quantization, pruning, knowledge distillation) at the HuggingFace Transformers abstraction level are keystones for this project and strategically vital for future work. By building optimization expertise and components now, we create reusable leverage points for optimizing future agent architectures and LLM systems. Success criteria: optimization techniques transfer to new agent architectures with minimal rework; techniques become team capability differentiator.
+
+**Solution Hypothesis (Market & Value):**
+- *Prospect (leap of faith):* Computational efficiency can be achieved in proactive agents without degrading behavior quality below acceptable thresholds
+- *Warrant (growth):* Cost reduction addresses a significant market: organizations with resource constraints, edge deployments, and cost-sensitive operations. Viable proactive agents enable a new product category and use cases currently impossible
+- *Backing (value):* Lower deployment costs create sufficient economic value to motivate adoption; benefits (operational savings, new capabilities) exceed optimization effort
+
+**Potential** (strategic opportunities):
+- Optimization principles transfer across agent architectures
+- Meta-optimization: learning how to optimize new agent systems
+- Commercial positioning for optimization consulting or specialized licensing
+
+**Related Elements** (for completeness):
+- **Outer Environment:** Rapidly evolving LLM infrastructure, competing agent platforms, resource constraints, open-source ecosystem
+- **Inner Environment:** ContextAgent architecture, optimization component library, evaluation framework, metrics collection system
+- **Leverage Points:** Model quantization, architecture pruning, knowledge distillation, batching strategies -->
 
 ---
 
-## 5. Problem Scenarios
+## 4. Problem Scenarios
 
-### Context Type Classification
+### 4.1 Describe the context type of your project as defined in Table 6.1
 
-Following Essence Section 6.3, we classify our project context as **Complex** (Table 6.1):
+We classify our project context as **Complex**. Deep learning systems are black boxes and we cannot reason our way through their behavior by inspection. However, unlike true Knightian uncertainties it is not unknowable in principle. With sufficient effort, some level of understanding is achievable, such as the domain of mechanistic interpretability.
 
-**Rationale:**
-- LLM internal mechanisms constitute largely opaque black boxes
-- System behavior emerges from high-dimensional interactions we cannot directly observe
-- Interpretability demands disproportionate effort relative to optimization benefits
-- Small perturbations can produce emergent behavioral changes
+In this context, we learn through structured experimentation: form a hypothesis about how an optimization technique will affect performance, run the experiment, observe the actual response, and adjust our mental model accordingly.
 
-**Consequence:** We adopt a Probe-Sense-Respond approach (Cynefin framework orientation):
-- Formulate hypotheses about optimization effects
-- Design experiments to measure effects
-- Gather empirical data through profiling
-- Adjust understanding and approach based on results
+### 4.2 Develop axes for Problem Scenarios as described in Section 6.3
 
-### Problem Scenario Axes
+**Axis 1 (Horizontal): How — Interaction Model**
+- *Reactive* — Human-initiated; users control when and what
+- *Proactive* — Agent-initiated; agents decide autonomously
 
-**Axis 1: Optimization Type**
-- *Low:* Single-technique optimization (quantization only)
-- *High:* Multi-technique combination (quantization + pruning + distillation)
+**Axis 2 (Vertical): How Much — Cost**
+- *Affordable* — Operating costs fit within practical budgets
+- *Costly* — Operating costs exceed practical justification
 
-**Axis 2: Deployment Context**
-- *Cloud-Based:* Resource abundant, latency-sensitive
-- *Edge/Device:* Resource constrained, reliability-critical
+### 4.3 Develop Problem Scenarios as illustrated in Figure 6.1
 
-### Problem Scenarios (Quadrant Analysis)
-
-| | Cloud-Based (Resource Abundant) | Edge/Device (Resource Constrained) |
+|  | **Affordable** | **Costly** |
 |---|---|---|
-| **Single Technique** | Modest improvements, straightforward implementation | Significant improvements necessary, complex tradeoffs |
-| **Multi-Technique** | Diminishing returns, increased complexity | Optimal tradeoffs, necessary for viability |
+| **Reactive** | Orchestration and coordination | Infrastructure scaling |
+| **Proactive** | Scaling and diffusion | Cost reduction and efficiency ← **Our Focus** |
 
-### Quadrant 1 (Single-Technique, Cloud): Incremental Enhancement
-**Problem:** Achieving meaningful efficiency gains in resource-rich environments requires careful technique selection; generic optimization may yield minor improvements insufficient to justify implementation complexity.
+### 4.4 Choose one problem to work with from now on 
 
-### Quadrant 2 (Multi-Technique, Cloud): Optimization Complexity
-**Problem:** Combining multiple techniques in abundant-resource contexts creates implementation complexity without proportional benefit; orchestrating techniques becomes the primary challenge.
+Current LLM-based AI systems only work as a response of an user's inquiry and proactive agents are too costly to deploy; economic barriers block adoption.
 
-### Quadrant 3 (Single-Technique, Edge): Fundamental Limitations
-**Problem:** Single-technique optimization cannot achieve the resource reduction required for edge deployment; proactive agents remain impractical without multi-technique approaches.
+### 4.5 Outline how this problem manifests itself
 
-### Quadrant 4 (Multi-Technique, Edge): Strategic Necessity
-**Problem:** Combining techniques for edge-deployed proactive agents requires careful coordination; success depends on understanding technique interactions and deployment-specific constraints.
+- Users limited to reactive type interactions with LLMs
+- High computational costs for LLMs in a loop
+- Autonomous agentic systems without a human-in-the-loop are not widely used
 
-### Selected Problem Focus
 
-We focus on **Quadrant 4 (Multi-Technique, Edge Deployment)** as our primary problem space:
+### 4.6 Outline the Outer Environment of your project
 
-**One-Sentence Problem Statement:** *Multi-technique optimization of proactive LLM agents for resource-constrained edge deployment, where technique interactions and deployment constraints create significant coordination challenges.*
+**External Services:** Optimization frameworks, inference engines
 
-### Problem Manifestations
+**External Implements:** Acceleration hardware, edge devices
 
-1. **Compression Size Limits:** Combined optimization must reduce model size sufficiently for device storage/memory while preserving proactive behavior quality
-2. **Latency Requirements:** Multi-step optimization pipelines must not introduce unacceptable inference delays
-3. **Accuracy Preservation:** Aggressive optimizations may degrade context understanding or decision quality below acceptable thresholds
-4. **Technique Sequencing:** Order of optimization application (e.g., distill-then-prune vs. prune-then-distill) produces different outcomes
-5. **Hardware Variability:** Optimizations must account for heterogeneous edge devices (phones, IoT, embedded systems)
+**External Repositories:** Open source models, datasets
 
-### Outer Environment Elements
-
-**Technical Ecosystem:**
-- Available optimization frameworks and libraries
-- LLM inference engines (ONNX, TensorRT, CoreML)
-- Hardware acceleration options
-- Open-source ContextAgent implementations
-
-**Competitive Landscape:**
-- Existing edge-optimized LLM projects
-- Commercial edge AI platforms
-- Academic research in model compression
-
-**Resource Constraints:**
-- Device storage capacity
-- Memory availability
-- Battery/power budgets
-- Network latency and bandwidth
-
-**User Needs and Expectations:**
-- Acceptable response latency (typically <500ms for proactive tasks)
-- Reliability and consistency
-- Privacy and on-device processing preference
+**External People:** LLM researchers, open-source community
 
 ---
 
-## 6. Leverage Scenarios
+## 5. Leverage Scenarios
 
-### Candidate Leverage Points
+### 5.1 Suggest leverage points for your project
 
-Following Table 7.1 (Leverage Point Categories in Essence), we identify:
+**Technology:** Model compression techniques (quantization, pruning, distillation), more efficient architectures (Mamba, LeWM)
 
-**Technical Leverage Points:**
-1. **Model Architecture Selection:** Choose LLM architectures naturally suited to compression
-2. **Training Data Curation:** Use high-quality instruction data emphasizing core proactive capabilities
-3. **Optimization Sequencing:** Order techniques to maximize cumulative benefit
-4. **Hardware-Aware Optimization:** Tailor techniques to target hardware (ARM processors, NPUs, etc.)
+**Components:** Optimization libraries (GPTQ, Ollama), resource constrained inference engines (vLLM, Unsloth)
 
-**Process Leverage Points:**
-5. **Automated Benchmarking:** Establish continuous measurement of optimization effects
-6. **Systematic Ablation Studies:** Isolate technique contributions and interactions
+**Information:** Open source datasets, seed papers (ContextAgent)
 
-**Strategic Leverage Points:**
-7. **Iterative Refinement Framework:** Create feedback loops between measurement and optimization
-8. **Stakeholder Engagement:** Validate deployment context assumptions with actual edge device operators
+**Human Resources:** Well-funded independent LLM researchers, open source contributors
 
-### PCRT Analysis (Tables 7.3, 7.4)
+### 5.2 Evaluate and select leverage points. Use PCRT-analysis
 
-| Leverage Point | Power | Cost | Readiness | Timing |
-|---|---|---|---|---|
-| Model Architecture Selection | **High** — influences all downstream optimization | **High** — may require starting with different base model | **Medium** — requires architectural analysis | **Early** — foundational choice |
-| Optimization Sequencing | **High** — determines optimization ceiling | **Low** — pure algorithmic manipulation | **High** — clear literature precedents | **Medium** — after technique baseline |
-| Hardware-Aware Optimization | **High** — directly maps to deployment | **Medium** — requires device characterization | **Medium** — emerging best practices | **Medium** — requires target definition |
-| Automated Benchmarking | **Medium** — enables systematic measurement | **Low** — tooling investment upfront | **High** — mature benchmark frameworks exist | **Early** — foundation for others |
-| Ablation Studies | **Medium** — isolates effects | **Medium** — experimental overhead | **High** — established methodology | **Ongoing** — continuous refinement |
-| Iterative Refinement | **High** — enables continuous improvement | **Medium** — process overhead | **High** — agile methodology standard | **Ongoing** — throughout project |
-| Stakeholder Engagement | **Medium** — validates assumptions | **Low** — interview and observation | **High** — straightforward approach | **Early & Mid** — clarify constraints |
+### PCRT Analysis
 
-### Selected Leverage Points
+| Leverage Point | Power | Cost | Risk | Time | Total |
+|---|---|---|---|---|---|
+| **Model Compression Techniques (Technology)** (quantization, pruning, distillation) | 9/10 | 1/10 | 2/10 | 2/10 | 4 |
+| **Efficient Architectures (Technology)** (Mamba, LeWM) | 8/10 | 2/10 | 3/10 | 4/10 | -1 |
+| **Optimization Libraries (Components)** (GPTQ, Ollama) | 7/10 | 1/10 | 2/10 | 2/10 | 2 |
+| **Inference Engines (Components)** (vLLM, Unsloth) | 7/10 | 2/10 | 2/10 | 2/10 | 1 |
+| **Seed Papers (Information)** | 6/10 | 1/10 | 1/10 | 2/10 | 2 |
+| **Open source contributors (Human resources)** | 5/10 | 2/10 | 3/10 | 2/10 | -2 |
 
-**Primary Leverage Points for Focused Effort:**
+### 5.3 Develop axes for the Leverage Scenarios as described in Section 7.3
 
-1. **Model Architecture Selection** (Power: High, Cost: High, Readiness: Medium)
-   - *Justification:* Foundational choice amplifying all subsequent optimization efforts; despite high cost, early selection enables parallel work
+### 5.3 Develop axes for Leverage Scenarios
 
-2. **Optimization Sequencing** (Power: High, Cost: Low, Readiness: High)
-   - *Justification:* High-impact, low-cost research question with established methodology
+**Vertical Axis: WHO**
+- *Seed Papers* — Theoretical foundation; research publications validating compression techniques
+- *Open Source Contributions* — Practical implementations; community-driven tools and libraries
 
-3. **Automated Benchmarking** (Power: Medium, Cost: Low, Readiness: High)
-   - *Justification:* Early infrastructure investment enabling rigorous measurement
+**Horizontal Axis: HOW**
+- *Model Compression* — Apply optimization techniques to existing models (quantization, pruning, distillation)
+- *Efficient Architectures* — Design or adopt new architectures inherently suited to resource constraints (Mamba, LeWM)
 
-### Leverage Scenarios Development
+### 5.4 Develop Leverage Scenarios as illustrated in Figure 7.1
 
-**Axis 1: Technical Depth**
-- *Shallow:* Single optimization per category (one quantization method, one pruning method)
-- *Deep:* Comprehensive technique space exploration
-
-**Axis 2: Hardware Scope**
-- *Narrow:* Optimize for single target device (e.g., Raspberry Pi 4)
-- *Broad:* Accommodate multiple device classes (phones, IoT, embedded)
-
-**Leverage Scenario Quadrants:**
-
-| | Narrow (Single Device) | Broad (Multiple Device Classes) |
+|  | **Model Compression** | **Efficient Architectures** |
 |---|---|---|
-| **Shallow (Single Techniques)** | Focused optimization, limited generalization | Quick wins, fragmented solutions |
-| **Deep (Comprehensive Exploration)** | Thorough understanding of single case | Generalizable principles, high effort |
+| **Seed Papers** | Theoretical optimization: validate compression techniques empirically, publish benchmarks | Architecture innovation: introduce new paradigms, theoretical performance bounds |
+| **Open Source Contributions** | Production tools: implement compression libraries, integrate into deployment pipelines | Community-driven architectures: adopt and adapt efficient designs, contribute optimizations |
 
-**Selected Scenario:** Deep + Broad — Comprehensive technique exploration across device classes to generate generalizable optimization principles
+### 5.5 Choose one scenario to work with from now on
+We've decided to select Open Source Contributions + Model Compression as our scenario. The intent is to build and integrate practical compression tools into the ecosystem, leveraging existing models and libraries to achieve more cost-efficient deployments.
 
-### Capabilities Enabled by Leverage Points
+### 5.6 Discuss the most important leverage points you plan to use in your project
 
-1. **Systematic Measurement Capability:** Automated benchmarking infrastructure enables rigorous comparison of technique effects
-2. **Sequencing Optimization Capability:** Understanding optimal technique ordering enables reproducible, high-performance optimization pipelines
-3. **Hardware-Informed Design Capability:** Cross-device optimization knowledge enables deployment to new hardware with confidence
-4. **Evidence-Based Iteration Capability:** Ablation studies provide principled basis for refinement decisions
+- **Model Compression Techniques** (Technology) — Quantization, pruning, distillation directly enable efficient proactive agents.
 
-### Inner Environment Integration
+- **Optimization Libraries** (Components) — Pytorch Lightning, Ollama provide production-ready implementations reducing engineering overhead.
 
-**Key Modules:**
-- ***Profiling Engine:*** Characterizes baseline ContextAgent performance on target devices
-- ***Optimization Pipeline:*** Applies techniques in specified sequence, collecting metrics at each stage
-- ***Evaluation Framework:*** Standardizes accuracy, latency, and resource measurements
-- ***Analysis Tooling:*** Synthesizes results into actionable insights and recommendations
+- **Seed Papers** (Information) — Agentic proactiveness research validates theoretical foundation and provides technique baselines.
+
+- **Open Source Community** (Human Resources) — Contributes tools, feedback, and adoption momentum enabling ecosystem-wide impact.
+
+### 5.7 Discuss the capabilities obtainable through these leverage points
+
+- **Faster Proactivity in Agents:** Compression reduces model latency; optimized pipelines enable inference in edge devices.
+
+- **More Accurate Proactivity in Agents:** Systematic ablation identifies accuracy-preserving optimizations and seed papers guide trade-off decisions.
+
+- **Smaller Proactive Agents:** Quantization and pruning reduce model sizes significantly while maintaining accuracies close to their baseline.
+
+### 5.8 Discuss the Inner Environment of your design
+
+- **Proactivity Benchmark** — Evaluation pipeline for any model + technique combination
+- **GPU Cluster (AILab)** — Computational infrastructure for training models and running experiments
+- **Custom Synthetic Dataset** — List of scenarios with desired proactivity levels
+- **Compression Pipeline** — Sequential implementation of quantization, pruning, distillation techniques
 
 ---
 
-## 7. Solution Scenarios
+## 6. Solution Scenarios
 
-### Solution Scenario Axes
+### 6.1 Develop axes for the Solution Scenarios as described in Section 8.3
 
-**Axis 1: Implementation Scope**
-- *Targeted:* Optimize specific ContextAgent components (e.g., context retrieval, decision making)
-- *Holistic:* Optimize entire system end-to-end
+**Vertical Axis: WHERE — Problem Perspective**
+- *New Interaction Paradigm* — Enable entirely new ways of interacting with LLMs beyond reactive prompting
+- *Add to Existing Products* — Augment existing LLM products with new capabilities
 
-**Axis 2: Technique Integration**
-- *Sequential:* Apply optimization techniques in strict sequence, measure at each stage
-- *Integrated:* Develop unified optimization approach combining techniques from start
+**Horizontal Axis: HOW — Contribution Approach**
+- *Optimize Existing Models* — Apply compression and optimization techniques to current models
+- *Develop New Models* — Design or adopt architectures inherently suited to proactive deployment
 
-### Solution Scenarios Quadrant Analysis
+### 6.2 Develop Solution Scenarios as illustrated in Figure 8.1
 
-| | Targeted Component Optimization | Holistic System Optimization |
+|  | **Optimize Existing Models** | **Develop New Models** |
 |---|---|---|
-| **Sequential Application** | Focused improvements, clear causality; risk of suboptimal global solution | Methodical exploration, strong understanding of effects; slower convergence |
-| **Integrated Engineering** | Risk of missing interactions; simpler implementation; possible quick wins | Comprehensive solution; requires sophisticated engineering; higher upfront complexity |
+| **New Interaction Paradigm** | Efficient proactive agents enabling new interaction model | Novel proactive architectures establishing new paradigm |
+| **Add to Existing Products** | Optimization as feature in existing LLM products | New proactive agent product line within existing organizations |
 
-### Quadrant Assessment
+### 6.3 Explain the Solution Scenarios you find in each quadrant
 
-**Quadrant 1 (Targeted + Sequential):** 
-- **Strengths:** Clear attribution of improvement to technique; manageable implementation complexity
-- **Weaknesses:** Component optimization may not yield system-level improvements; optimization siloing may miss synergies
+**Quadrant I (New Paradigm + Optimize Existing):** Prove proactive agents are economically viable by optimizing existing models
 
-**Quadrant 2 (Targeted + Integrated):**
-- **Strengths:** Focused scope; potential for elegant technical solution
-- **Weaknesses:** May fail to address genuine system-level bottlenecks; narrow perspective on optimization value
+**Quadrant II (New Paradigm + Develop New):** Design proactive-native architectures from the ground-up
 
-**Quadrant 3 (Holistic + Sequential):**
-- **Strengths:** Comprehensive perspective; clear measurement of cumulative effects; methodical understanding build
-- **Weaknesses:** Longer timeline; slower initial results; complexity growth with each technique addition
+**Quadrant III (Add to Existing + Optimize Existing):** Add proactive mode as a feature to existing products
 
-**Quadrant 4 (Holistic + Integrated):**
-- **Strengths:** Unified approach potentially yielding superior results; comprehensive understanding of solution qualities
-- **Weaknesses:** Highest implementation complexity; requires sophisticated system modeling; risk of premature optimization
+**Quadrant IV (Add to Existing + Develop New):** Build new proactive product line within existing organizations
 
-### Selected Solution Scenario
+### 6.4 Choose one scenario to work with from now on
 
-We select **Quadrant 3 (Holistic + Sequential)** as primary approach:
+We select **Quadrant I (New Interaction Paradigm + Optimize Existing Models)** as our primary approach.
 
-**Rationale:**
-- Matches Mission fulcrum emphasis on measurable, incremental progress
-- Provides strong empirical foundation for understanding technique interactions in holistic system
-- Enables clear communication of results (showing before/after for each technique stage)
-- Reduces risk through methodical, validated progression
+**Prospect:** Our project reduces the cost and improves the accuracy of proactive agents.
 
-### Short-Term Strengths and Weaknesses
+**Warrant:** Current LLMs operate mostly in reactive mode. The market lacks proof that efficient proactive operation is possible or desired.
 
-**Strengths (Near-term Value Creation):**
-- Rapid production of comparative data showing technique effects
-- Clear demonstration of optimization viability on real hardware
-- Reproducible pipeline enabling others to apply techniques in their contexts
-- Manageable complexity enabling focused team effort
+**Backing:** Successfully optimizing existing models for proactive agents opens new use cases, making way for a paradigm shift in human-agent interaction.
 
-**Weaknesses (Near-term Challenges):**
-- Longer timeline before achieving target optimization levels
-- Initial stages may show modest improvements, creating momentum challenges
-- Sequential approach precludes discovering beneficial technique combinations early
-- Potential for premature conclusions about technique interactions
+### 6.5 Discuss short-term strengths and weaknesses of your chosen scenario
 
-### Long-Term Opportunities and Threats
+**Strengths:**
+- Uses existing models instead of building new ones, which reduces technical risk
+- Can show results quickly within the project timeline
+- Cheaper for early users to adopt the same model with less cost
+- Creates early proof that the market wants optimized proactive agents
 
-**Opportunities:**
-- Detailed understanding of ContextAgent's bottlenecks informs next-generation agent architecture design
-- Holistic perspective enables identification of optimization principles transferable to other LLM-based systems
-- Sequential data collection creates training examples for meta-optimization (learning how to optimize similar agents)
-- Published results establish proof-of-concept driving broader industry adoption of proactive agents
+**Weaknesses:**
+- We're limited by how much existing models can be optimized
+- Other people can use the same optimization techniques, so it's not unique
+- Early agents might not feel great because they're built on reactive models
+- We need to accept that optimized models have built-in trade-offs
 
-**Threats:**
-- More agile competitors employing Quadrant 4 (integrated) approach may discover superior optimization combinations earlier
-- Rapid LLM model evolution may outpace our optimization efforts, rendering detailed ContextAgent optimization less relevant
-- Emerging edge-specific LLM architectures may make general optimization techniques obsolete
-- Resource constraints may force incomplete exploration, leaving open significant optimization opportunities
+### 6.6 Discuss longer-term strengths and weaknesses of your chosen scenario
+
+**Strengths:**
+- Our research becomes the standard that new architectures are built with
+- We can do consulting work as new models come out
+- Our performance data becomes a valuable asset
+- Big companies invest in optimized proactive agents through our technology
+
+**Weaknesses:**
+- Bigger companies build better new models faster and make our work obsolete
+- New models come out faster than we can optimize them
+- Nobody actually wants proactive agents, so our work doesn't matter
+- Better new systems make optimization unnecessary
+- Companies absorb our team or idea before our work has full value
 
 ---
 
-## 8. Horizon
+## 7. Horizon
 
-### Technology Push Effects on Horizon
+### 7.1 Will your horizon be affected by the technology push? What and how?
 
-**Model Evolution:**
-As LLM capabilities advance through new architectures and training methods, the baseline ContextAgent system will evolve, potentially shifting optimization targets. New architectural paradigms (e.g., mixture-of-experts models) may render current optimization techniques suboptimal.
+New optimization frameworks and hardware accelerators are constantly emerging. If we design our techniques around specific tools or hardware, they'll become obsolete quickly. Instead, we need to focus on general optimization principles that work across different architectures and hardware, so our work stays relevant as technology shifts.
 
-**Hardware Acceleration:**
-Emergence of specialized edge AI hardware (NPUs, dedicated AI accelerators in consumer devices) will create new optimization opportunities and potentially commoditize current optimization techniques.
+### 7.2 Will your horizon be affected by market pull? What and how?
 
-**Framework Maturation:**
-Increasingly mature optimization frameworks may reduce implementation effort, enabling broader technique exploration than currently feasible.
+Right now very few organizations actually deploy proactive agents because they are a new unvalidated paradigm, and too expensive. If our optimization makes them cheap enough, demand could shift. As the market grows, our role could change from building novel techniques to becoming proactive agent specialists or consultants that companies hire to optimize their own systems.
 
-**Horizon Implication:** Our optimization principles remain relevant even as specific instantiation evolves; focus on generalizable insights rather than specific technique implementations.
+### 7.3 Will changes in innovation type characterize your horizon? How and why?
 
-### Market Pull Effects on Horizon
+We're currently doing position innovation, taking existing technology and making it cheaper. But if proactive agents become mainstream, optimization could shift to being its own modular component that companies can plug in. Eventually, efficient design might just be built into systems from the start, making our current optimization work seem less valuable.
 
-**Adoption Momentum:**
-Successful demonstration of practical proactive agents on edge devices will accelerate market demand, potentially creating commercial opportunities for optimization consulting or specialized services.
+### 7.4 Formulate horizon hypotheses as outlined in Table 9.1
 
-**User Capability Evolution:**
-As users gain familiarity with proactive agents, expectations will rise regarding response latency and context preservation—driving demand for increasingly aggressive optimization.
-
-**Competitive Consolidation:**
-Market maturation will likely see major AI/tech companies releasing proprietary optimized proactive agent frameworks, potentially commoditizing optimization techniques but creating demand for application-specific customization.
-
-**Horizon Implication:** Early-mover advantage in publishing optimization principles and demonstrating commercial viability creates positioning for specialized optimization consulting or component licensing.
-
-### Innovation Type Evolution
-
-**Current State:** Incremental innovation focused on existing ContextAgent architecture
-
-**Medium Term (1-2 years):** Potential shift toward modular innovation as industry identifies optimization as distinct value proposition; specialized optimization layers may become component-based
-
-**Long Term (3+ years):** Possible shift toward radical innovation if optimization requirements fundamentally reshape proactive agent architectures (e.g., moving from monolithic models to hierarchical, multi-stage systems)
-
-### Horizon Hypotheses
-
-| Hypothesis | Current Belief | Test/Validation |
+| Dimension | Now (Present) | Later (Future) |
 |---|---|---|
-| **H1: Optimization Portability** | Principles from ContextAgent optimization transfer to other proactive agents | Replicate key optimization on alternative agent architecture; compare results |
-| **H2: Hardware-Technique Fit** | Specific optimization techniques perform best on specific hardware classes | Compare technique performance across 3+ different edge device types |
-| **H3: Accuracy Preservation** | Multi-technique optimization can maintain 90%+ of baseline accuracy while reducing model size by 70%+ | Establish accuracy baseline; measure degradation through optimization pipeline |
-| **H4: Market Timing** | Market adoption of edge proactive agents will accelerate within 2 years | Track product announcements and research publications in edge AI agent space |
-| **H5: Technique Obsolescence** | Current optimization techniques will remain relevant for 3-5 years despite LLM evolution | Annually re-evaluate technique applicability to newest LLM architectures |
+| **Problem** | Proactive agents cost too much to run | Cost will still be the main barrier to widespread use |
+| **Leverage** | Optimization techniques are key to making this work | Optimization expertise will be valuable as things grow |
+| **Prospect** | We can cut costs significantly without losing accuracy | Future systems will be designed for efficiency, not patched later |
+| **Warrant** | Companies can't deploy proactive now because of cost | Cheaper proactive agents open new markets that matter |
+| **Backing** | Our approach works in today's context | Our research helps us lead in this space later |
 
-### Verification Criteria
+### 7.5 Outline some criteria you might use to verify or falsify your hypotheses
 
-**For H1 (Portability):** Portfolio of published results showing optimization principles applied to ≥2 different agent architectures with comparable relative improvements
+**Problem:** Show that cost blocks deployment now. After we optimize, measure if people actually deploy it.
 
-**For H2 (Hardware Fit):** Performance comparison matrix showing technique-to-hardware recommendations based on empirical data
+**Leverage:** Use our techniques on other agent types and show similar improvements. See if others adopt our tools.
 
-**For H3 (Accuracy):** Quantitative accuracy preservation metrics across optimization pipeline stages
+**Prospect:** Reduce costs significantly with minimal accuracy loss. Get simmilar results on different architectures.
 
-**For H4 (Market Timing):** Tracking database of commercial and academic proactive agent efforts, charting adoption trajectory
+**Warrant:** Find the new use cases that our cost reduction enables. Then, monitor if those markets grow.
 
-**For H5 (Technique Relevance):** Annual technical review of whether techniques remain applicable to current SOTA architectures
-
----
-
-## 9. Outer Environment
-
-### VUCA Challenge Assessment
-
-**Applying Table 10.1 (Essence) to our Outer Environment:**
-
-| VUCA Dimension | Challenge | Relevance to Our Project | Severity |
-|---|---|---|---|
-| **Volatility** | LLM landscape changes rapidly | Very High | High |
-| **Uncertainty** | Optimization effectiveness unknown | High | High |
-| **Complexity** | Multiple interacting optimization techniques | Very High | High |
-| **Ambiguity** | "Proactive agent" definition unclear; deployment needs diverse | High | Medium |
-
-### VUCA Strategy Discussion (Essence Table 11.2)
-
-**Volatility Strategies:**
-
-1. *Scenario Planning* — Can we prepare multiple contingencies?
-   - **Utility:** High — Pre-develop optimization approaches for alternative agent architectures
-   - **Implementation:** Maintain abstraction layer enabling technique porting to future architectures
-
-2. *Rapid Response* — Can we adapt quickly to changes?
-   - **Utility:** Medium — Research timelines long; market moves fast
-   - **Implementation:** Maintain optionality in optimization pipeline; avoid deep coupling to specific ContextAgent version
-
-3. *Flexibility* — Can we maintain flexibility to shift direction?
-   - **Utility:** High — Enables pivot if architectural assumptions invalidate
-   - **Implementation:** Modular technique architecture; generic measurement frameworks
-
-**Uncertainty Strategies:**
-
-1. *Intelligence Gathering* — Can we reduce uncertainty through research?
-   - **Utility:** Very High — Core project activity
-   - **Implementation:** Systematic profiling, ablation studies, hypothesis testing
-
-2. *Incremental Decision-Making* — Can we make decisions with partial information?
-   - **Utility:** High — Mission fulcrum naturally supports incremental approach
-   - **Implementation:** Stage-gate decision points based on interim results
-
-3. *Buffering* — Can we build slack/redundancy?
-   - **Utility:** Medium — Time buffers rather than resource buffers relevant
-   - **Implementation:** Timeline contingency for unexpected technique interactions
-
-**Complexity Strategies:**
-
-1. *Decomposition* — Can we break problem into manageable parts?
-   - **Utility:** Very High — Existing in our Sequential approach
-   - **Implementation:** Component-level optimization reduces system-level complexity; hierarchical measurement framework
-
-2. *Modeling* — Can we build conceptual models enabling pattern recognition?
-   - **Utility:** High — Technique effectiveness models predict optimization outcomes
-   - **Implementation:** Develop models relating model characteristics to technique effectiveness
-
-3. *Abstraction* — Can we focus on essential elements, ignoring complicating details?
-   - **Utility:** High — Layer hardware details; hide ContextAgent internals
-   - **Implementation:** Generic optimization interfaces; abstracted measurement collection
-
-**Ambiguity Strategies:**
-
-1. *Stakeholder Engagement* — Can we clarify needs through collaboration?
-   - **Utility:** High — Device manufacturer input clarifies deployment constraints
-   - **Implementation:** Early interviews with target deployment partners (IoT manufacturers, mobile platforms)
-
-2. *Experimentation* — Can we discover meaning through trying approaches?
-   - **Utility:** Medium — Some ambiguity resolves through empirical exploration
-   - **Implementation:** Prototype multiple deployment scenarios; gather feedback on proactive behavior quality
-
-### Active VUCA Strategy Deployment
-
-**Immediate Actions:**
-- Conduct stakeholder interviews (ambiguity reduction) with 2-3 target deployment partners
-- Develop scenario plans (volatility mitigation) for 2 alternative agent architectures
-- Establish rapid profiling capability (uncertainty reduction) enabling quick exploration of new techniques
-- Implement modular optimization interfaces (complexity decomposition, flexibility preservation)
-
-**Ongoing Activities:**
-- Monthly volatility scan: Monitor SOTA LLM announcements; assess optimization technique relevance
-- Quarterly uncertainty reduction: Share interim findings with research community; incorporate feedback
-- Continuous complexity management: Maintain clear decomposition; refactor if component interactions become obscure
-- Periodic stakeholder updates: Validate assumptions haven't shifted; adjust scope if needed
+**Backing:** Publish results that match what competitors do. Track if people use our open source tools.
 
 ---
 
-## 10. Inner Environment
+## 8. Strategy and Outer Environment
 
-### Conceptual Models for Design
+### 8.1 Discuss VUCA challenges for your project
 
-**Applying Section 12.2 (Essence) — Near-Decomposability:**
+**Volatility:** LLMs change constantly. New models, hardware, and research breakthroughs appear unexpectedly. Last year's optimization might not work on this year's models. This affects us a lot because we can't predict what will be worth optimizing next.
 
-**Model 1: Compression Pipeline Abstraction**
-A sequential transformation pipeline where each optimization stage operates on outputs from prior stage:
+**Uncertainty:** We don't know if our optimization techniques will work on different agent types or if the market will actually want what we build. We're developing solutions but the market needs remain unsettled.
+
+**Complexity:** Optimization techniques interact in ways we don't understand yet. Quantization might work differently when combined with pruning. The LLM internals are black boxes. Many variables affect the outcomes. This is of very high importance because we have to build and test to discover what works.
+
+**Ambiguity:** What counts as "good" proactive behavior varies wildly. One person wants fast response times, another wants accuracy. Deployment contexts are totally different. Requirements from potential users are unclear. This is high importance because we can't lock into one solution.
+
+Most important for us: Complexity and Ambiguity are the biggest challenges. We don't understand how techniques interact, and we're not sure what users actually need.
+
+### 8.2 Discuss VUCA strategies for your Outer Environment
+
+**For Volatility:**
+- Keep designs flexible. Don't lock into specific models or frameworks.
+- Watch the field constantly. Monitor new LLM releases and optimization papers.
+- Build general principles instead of specific implementations.
+- Aligned with "Act, sense, and respond" (Strategy and Outer Environment, page 27). This will be useful because monitoring shifts are expected in LLM research, but stockpiling resources isn't practical for our project.
+
+**For Uncertainty:**
+- Test assumptions early through prototypes and experiments.
+- Talk to people who might deploy our work to clarify what they need.
+- Make incremental decisions as you learn, rather than planning everything upfront.
+- Aligned with "Prepare contingency plans" and "isolate dependencies" (Strategy and Outer Environment, page 28). It could be useful because our stage isolation directly addresses dependencies, but we lack explicit contingency plans for when techniques fail to transfer, so we don't expect this strategy to be very effective.
+
+**For Complexity:**
+- Break optimization into separate stages that can be measured independently.
+- Build models or simulations to predict how techniques will interact.
+- Test combinations carefully before running the full pipeline.
+- Aligned with "limiting manifestations, user categories, and dependencies" (Strategy and Outer Environment, page 29). This will be partially useful because we isolate dependencies, but refusing to limit user categories means we still face high complexity.
+
+**For Ambiguity:**
+- Engage with potential users early. Get feedback on proactive behavior.
+- Run experiments to discover what works in practice.
+- Stay flexible. Don't commit to one definition of "good."
+- Aligned with "Probe, sense, and respond" (Strategy and Outer Environment, page 30). We could expect this to be quite useful, guiding us through unclear user demands, but the limited size and access we have to such users can give us a false sense of direction.
+
+### 8.3 How could you use these strategies actively in your project?
+
+- Monitor to adapt: Set a monthly check to scan for new LLM releases and optimization research. If something significant changes, re-evaluate whether our techniques still apply. This handles volatility.
+
+- Include user feedback early: Before finalizing designs, interview 2-3 organizations that might want to deploy edge proactive agents. Ask what performance matters most to them. Cost? Speed? Accuracy? This clarifies ambiguity.
+
+- Isolate and combine validation: Test each optimization stage separately first. Measure what each one does alone before combining them. Build a prediction model for how they interact. This manages complexity.
+
+- Iterate in short cycles: Prototype techniques, test on real scenarios, collect feedback, and adjust. Don't try to perfect everything before learning from practice, as it is most likely that success criteria will change. This reduces uncertainty.
+
+---
+
+## 9. Inner Environment
+
+### 9.1 Which conceptual models do you use to design the architecture and outline primary components in your project?
+
+**Model 1: Optimization Pipeline**
+
+The optimization pipeline is a sequential transformation:
 
 ```
-Original Model → Quantization Stage → Pruning Stage → Distillation Stage → Optimized Model
-     ↓               ↓                    ↓                  ↓                    ↓
-Measure          Measure               Measure            Measure            Measure
+Original Model → Quantization → Pruning → Distillation → Optimized Model
+       ↓            ↓              ↓           ↓              ↓
+   Measure       Measure        Measure     Measure        Measure
 ```
 
-This model emphasizes *near-decomposability*: Each stage can be analyzed somewhat independently, yet understanding stage interactions requires integrated testing.
+Each stage takes the output of the previous stage and applies one optimization technique. We measure performance (accuracy, latency, size) at each step to understand individual and combined effects.
 
-**Model 2: Constraint Satisfaction Framework**
-Optimization treated as satisfying multiple competing constraints:
-- Model size < Device storage capacity
-- Inference latency < User tolerance threshold  
-- Accuracy > Minimum acceptable threshold
-- Power consumption < Device battery budget
+**Model 2: Proactive Agent Architecture**
 
-Near-decomposability applies: Device constraints partially decouple from accuracy constraints, but technique interactions create coupling.
+The proactive agent operates as a loop with optional deferred reactivation:
 
-**Model 3: Technique Interaction Matrix** (Figure 1)
-Visual representation of how optimization techniques influence one another:
-- *Synergistic interactions* (combined effect > sum of parts)
-- *Competitive interactions* (techniques interfere)
-- *Independent interactions* (techniques orthogonal)
+```
+                    Opportunity Detection
+                           ↓
+Raw Input → Context Understanding → Decision Making → Execution → Results
+                                         ↓
+                            ┌─ [Act] → Loop back to Opportunity Detection
+                            │
+                            └─ [Defer] → Low-power state, wait for trigger
+```
+
+The agent continuously analyzes the user's context and environment to detect opportunities. When it identifies something worth acting on, it goes through decision making and execution. After acting, it either loops back for continuous monitoring or defers to low-power mode waiting for a reactivation trigger. Optimization targets both the check-act cycle and the defer mechanism.
+
+### 9.2 Are any of these models helpful for modeling near-decomposable designs, as discussed in Section 12.2?
+
+Yes, both models help with near-decomposability.
+
+**Optimization Pipeline:** Each stage is nearly independent. Quantization doesn't directly depend on whether pruning happens next—we can test them separately, measure their individual effects, then test combinations. This near-decomposability lets us understand the pipeline piece by piece instead of all at once.
+
+**Proactive Agent Architecture:** The three components (context, decision, execution) have clear boundaries. Context understanding can be optimized somewhat independently of decision making. However, they're not fully independent—changing context representation affects decision making quality. We can work on each component, but we need to test their interactions.
+
+### 9.3 Discuss VUCA strategies for your Inner Environment (see Table 12.1). Are any of them relevant to your project? How?
+
+**For Volatile Component Behavior ("Dynamic Binding"):**
+- Use plugin architecture so we can swap techniques without rewriting code.
+- New quantization methods can be added as new plugins.
+- This will be useful because we expect optimization techniques to evolve, and plugins let us adapt without redesign.
+
+**For Uncertain System Properties ("Continuous Monitoring"):**
+- Log performance metrics (accuracy, latency, memory) at every stage during testing.
+- Track how metrics change as we apply each technique.
+- This will be very useful because we don't know how techniques interact, so constant measurement helps us discover problems early.
+
+**For Complex Interactions ("Model & Simulate"):**
+- Build lightweight prediction models showing how quantization affects accuracy, how pruning affects latency.
+- Use these models to predict what combinations will work before running full tests.
+- This will be useful but limited because LLM behavior is unpredictable. Simulation helps but won't fully capture reality.
+
+**For Ambiguous Requirements ("Exploratory Engineering"):**
+- Build 2-3 different versions of the context understanding module and test them.
+- Try different compression strategies and see which preserves proactive behavior best.
+- This will be useful because we don't know what "good" proactive behavior looks like, so trying variants helps us discover it.
+
+**For Difficult Testing ("Instrumentation"):**
+- Collect detailed traces showing where time and memory are spent in each component.
+- Monitor at multiple levels: model internals, framework behavior, device runtime.
+- This will be very useful because optimization gains are hard to understand without seeing where they come from.
+
+### 9.4 How could you use these strategies actively in your project?
+
+**Build a plugin system early:** Instead of hardcoding quantization, pruning, distillation, make them swappable components. This takes initial effort but saves time when adding new techniques.
+
+**Instrument before optimizing:** Before applying any technique, set up logging of accuracy, latency, memory usage. This baseline lets you see exactly what each optimization does.
+
+**Create a technique interaction model:** After testing quantization and pruning separately, build a simple model predicting combined effects. It won't be perfect, but it reduces trial-and-error.
+
+**Test variants in parallel:** Build 2-3 versions of critical components (like context understanding) and run them side-by-side to discover which compression strategy works best for proactive behavior.
+
+**Monitor continuously:** Run your optimization pipeline with full instrumentation enabled. Watch the logs real-time to catch unexpected degradation early instead of discovering it late.
+
 
 ### Near-Decomposability Application
 
