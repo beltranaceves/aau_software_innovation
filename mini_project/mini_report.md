@@ -511,425 +511,223 @@ Yes, both models help with near-decomposability.
 
 ### 9.3 Discuss VUCA strategies for your Inner Environment (see Table 12.1). Are any of them relevant to your project? How?
 
-**For Volatile Component Behavior ("Dynamic Binding"):**
-- Use plugin architecture so we can swap techniques without rewriting code.
-- New quantization methods can be added as new plugins.
-- This will be useful because we expect optimization techniques to evolve, and plugins let us adapt without redesign.
+**For Volatility:**
+- Build a plugin system so we can swap quantization, pruning, and other techniques without rewriting code.
+- As new optimization methods emerge, we just add them as plugins instead of redesigning the whole system.
+- Aligned with "Build generic capabilities" and "microservice architecture" (Inner Environment, page 21). This will be useful because we expect optimization techniques to evolve, and plugins let us adapt without redesign.
 
-**For Uncertain System Properties ("Continuous Monitoring"):**
-- Log performance metrics (accuracy, latency, memory) at every stage during testing.
-- Track how metrics change as we apply each technique.
-- This will be very useful because we don't know how techniques interact, so constant measurement helps us discover problems early.
+**For Uncertainty**
+- Log accuracy, latency, and memory at each optimization stage.
+- We don't know how these techniques interact, so continuous measurement catches problems early.
+- Aligned with "Information hiding" and "isolate uncertainties in modules" (Inner Environment, page 23). This will be very useful because we don't know how techniques interact, so measurement isolation helps us understand what works.
 
-**For Complex Interactions ("Model & Simulate"):**
-- Build lightweight prediction models showing how quantization affects accuracy, how pruning affects latency.
-- Use these models to predict what combinations will work before running full tests.
-- This will be useful but limited because LLM behavior is unpredictable. Simulation helps but won't fully capture reality.
+**For Complexity:**
+- Build simple models showing how quantization affects accuracy, or how pruning affects speed.
+- Use these to predict what combinations might work before running full tests.
+- Test each optimization stage independently first, then measure their combined effects.
+- Aligned with "Modularize into nearly decomposable systems" and "divide-and-conquer" (Inner Environment, page 25). We expect this to not be effective, proxy models for LLMs are usually not accurate enough, there's even a lot of variance between models of the same family but different parameter count.
 
-**For Ambiguous Requirements ("Exploratory Engineering"):**
-- Build 2-3 different versions of the context understanding module and test them.
-- Try different compression strategies and see which preserves proactive behavior best.
-- This will be useful because we don't know what "good" proactive behavior looks like, so trying variants helps us discover it.
-
-**For Difficult Testing ("Instrumentation"):**
-- Collect detailed traces showing where time and memory are spent in each component.
-- Monitor at multiple levels: model internals, framework behavior, device runtime.
-- This will be very useful because optimization gains are hard to understand without seeing where they come from.
+**For Ambiguity:**
+- Test 2-3 different versions of key components like context understanding.
+- Try different compression strategies on each and see which preserves proactive behavior best.
+- Let experimental results guide which designs work and which don't, rather than deciding upfront.
+- Aligned with "Use experimentation (MVP)" and "problem-solving as natural selection" (Inner Environment, page 27). We also expect this not work very well, as it requires extraordinary breath and might derail the project.
 
 ### 9.4 How could you use these strategies actively in your project?
 
-**Build a plugin system early:** Instead of hardcoding quantization, pruning, distillation, make them swappable components. This takes initial effort but saves time when adding new techniques.
+**Plugin system:** Don't hardcode techniques. Make quantization, pruning, and distillation swappable components. It takes effort upfront but saves time when adding new methods.
 
-**Instrument before optimizing:** Before applying any technique, set up logging of accuracy, latency, memory usage. This baseline lets you see exactly what each optimization does.
+**Measure first:** Before optimizing anything, set up logging for accuracy, latency, and memory. This baseline shows exactly what each technique does.
 
-**Create a technique interaction model:** After testing quantization and pruning separately, build a simple model predicting combined effects. It won't be perfect, but it reduces trial-and-error.
-
-**Test variants in parallel:** Build 2-3 versions of critical components (like context understanding) and run them side-by-side to discover which compression strategy works best for proactive behavior.
-
-**Monitor continuously:** Run your optimization pipeline with full instrumentation enabled. Watch the logs real-time to catch unexpected degradation early instead of discovering it late.
-
-
-### Near-Decomposability Application
-
-**Component Decomposition:**
-
-1. **ContextAgent Core Module**
-   - Boundary: Clearly defined input/output interface
-   - Internal Variability: High (complex LLM internals)
-   - Optimization Coupling: Primary target for all techniques
-   - Interaction Points: Upstream (data flow), Downstream (decision making)
-
-2. **Context Understanding Module**
-   - Boundary: Clear specification of context representation
-   - Internal Variability: Medium (embedding-based representation)
-   - Optimization Coupling: Primary target for knowledge distillation
-   - Interaction Points: Upstream (raw input), Downstream (decision making)
-
-3. **Decision Making Module**
-   - Boundary: Well-defined action output interface
-   - Internal Variability: Medium (classification/ranking logic)
-   - Optimization Coupling: Pruning target (potentially redundant decision logic)
-   - Interaction Points: Upstream (context input), Downstream (action execution)
-
-4. **Measurement and Evaluation Module**
-   - Boundary: Standardized metrics collection
-   - Internal Variability: Low (well-established infrastructure)
-   - Optimization Coupling: Essential for all other modules' evaluation
-   - Interaction Points: All other modules (cross-cutting concern)
-
-### Inner Environment VUCA Strategies (Table 12.1)
-
-**Applying Essence Table 12.1 — Inner Environment Strategies:**
-
-| Challenge | Current Relevance | Strategy | Application |
-|---|---|---|---|
-| **Volatile Component Behavior** | Medium | Dynamic Binding | Plug-in architecture allowing technique swapping without recompilation |
-| **Uncertain System Properties** | High | Continuous Monitoring | Real-time metrics collection during optimization |
-| **Complex Interactions** | Very High | Model & Simulate | Build optimization effect prediction models; simulate technique combinations before full pipeline |
-| **Ambiguous Requirements** | Medium | Exploratory Engineering | Rapid prototyping of component alternatives; user feedback on proactive behavior |
-| **Difficult Testing** | High | Instrumentation | Deep profiling capability capturing optimization effects at multiple abstraction levels |
-
-### Specific Strategy Implementation
-
-**1. Dynamic Binding (Volatility Management)**
-- *How:* Plugin architecture for optimization techniques
-- *Benefit:* New techniques integrate without system redesign; easy A/B testing 
-- *Implementation:* Abstract `OptimizationStage` interface; technique-specific implementations pluggable
-
-**2. Continuous Monitoring (Uncertainty Reduction)**
-- *How:* Comprehensive metrics collection during optimization
-- *Benefit:* Real-time insights into technique interactions; early detection of degradation
-- *Implementation:* Instrument every optimization stage; log memory, latency, accuracy at sub-second granularity
-
-**3. Model & Simulate (Complexity Management)**
-- *How:* Build predictive models of technique combinations
-- *Benefit:* Explore optimization space more efficiently; understand interactions before full measurements
-- *Implementation:* Lightweight models predicting accuracy loss from quantization bit-depth, pruning ratio; simulate pipeline combinations
-
-**4. Exploratory Engineering (Ambiguity Clarification)**
-- *How:* Rapid iteration on component alternatives with user feedback
-- *Benefit:* Empirical understanding of what "good" proactive behavior looks like; validation of design choices
-- *Implementation:* Build 3-4 alternative context understanding implementations; gather feedback from test users on behavior quality
-
-**5. Instrumentation (Testing Support)**
-- *How:* Deep profiling at multiple levels (model layer, framework layer, device OS)
-- *Benefit:* Detailed understanding of where optimization gains come from; enables optimization debugging
-- *Implementation:* Collect traces from both optimization framework and device runtime; correlate metrics across layers
+**Test variants side-by-side:** Run 2-3 different context understanding implementations in parallel to find which compression strategy works best for your agent's behavior.
 
 ---
 
-## 11. Evolvability and Innovation Theory
+## 10. Evolvability and General Innovation Theory
 
-### Diffusibility in Our Project
+### 10.1 Describe and illustrate diffusibility in relation to your project
+Diffusibility is high because cost-effective proactive agents could enable more than one new interaction paradigm. Moreso, the optimization techniques can be useful in other use-cases, they are simply constrained to LLMs.
+### 10.2 Describe and illustrate adoptability in relation to your project
+Adoptability is high because the project is built on top of a well established building block. The HuggingFace Transformers library is widely used and already integrated into many research and production systems.
+By implementing our work at this level, existing users can adopt the project without changing models, tooling, or workflows. Support for many architectures and model types further lowers the barrier to integration and reuse.
+### 10.3 Evaluate your project using one or more of the evaluation types
+We used the Here-and-now quick-and-dirty evaluation instrument, presented in *(Based on Rose, J. (2010) Software Innovation: Eight work-style heuristics for creative software developers, Dept. of Computer Science, Aalborg University, pages 113–116)*
 
-**Definition:** The ease with which our optimization techniques can spread to other contexts, users, and systems.
+### 10.3 Project Evaluation
 
-**Diffusion Mechanisms:**
+*(Based on Rose, J. (2010), pages 113–116)*
 
-1. **Open Publication**
-   - *Mechanism:* Distribution through academic papers, technical blogs, open-source code
-   - *Reach:* Research community, LLM optimization practitioners, edge AI developers
-   - *Enablers:* Reproducible methodology; publicly available code; clear documentation
+**Keep your head up**  
+Do you understand the latest technical trends and developments in the field you are working on?  
+Yes. We follow LLM and agent developments closely.
 
-2. **Framework Integration**
-   - *Mechanism:* Incorporation into mainstream optimization frameworks (Hugging Face, ONNX, TensorRT)
-   - *Reach:* General ML practitioners; commercial AI developers
-   - *Enablers:* Standardized interfaces; ease of integration
+Do you know the rival products that other software companies are working on?  
+Yes. We are aware of tools like OpenClaw, Claude Code, and similar agents.
 
-3. **Community Replication**
-   - *Mechanism:* Other research groups replicate and extend techniques for alternative agents
-   - *Reach:* Academic researchers; specialized optimization teams
-   - *Enablers:* Clear experimental protocols; published code
+Do you understand the emerging technology potential?  
+Yes. We see proactive agents as a possible shift in interaction models.
 
-**Diffusibility Projection:** High diffusibility potential given open-source ethos in ML community and clear practical value proposition.
+Have you assessed what infrastructure your product requires, and will it be in place when the product is released?  
+Partly. We rely on existing infrastructure but have not tested full deployment scenarios.
 
-### Adoptability in Our Project
+Have you investigated the potential market for your product?  
+Partly. There is interest, but the market is still unclear.
 
-**Definition:** The ease and speed with which potential users can integrate our optimization approach into their own systems.
+Is your timing right?  
+Likely yes. The space is early and not yet saturated.
 
-**Adoption Barriers and Enablers:**
+**Score: 6**
 
-| Barrier | Severity | Mitigation |
-|---|---|---|
-| Integration effort (learning curve) | High | Comprehensive documentation; pre-built bindings for popular frameworks |
-| Technique specificity (transferability) | Medium | Generalize principles; provide guidelines for technique adaptation |
-| Validation overhead | Medium | Pre-computed benchmark results for standard devices; publicly available evaluation protocols |
-| Support availability | Low-Medium | Active community support; clear issue tracking |
+***
 
-**Adoption Accelerators:**
+**Grow your knowledge community**  
+Are you in contact with leaders in the field?  
+No direct contact. We rely on papers and open source work.
 
-1. **Plug-and-Play Integration** — Minimize integration effort through standardized interfaces
-2. **Empirical Validation** — Publish results across diverse devices and agent architectures
-3. **Educational Resources** — Tutorials, webinars, case studies enabling informed adoption
+Do you partner to improve your expertise base?  
+Not really. Work is mostly internal.
 
-**Adoptability Projection:** Moderate-to-high adoptability; adoption rate primarily limited by general awareness rather than technical barriers.
+Can you import necessary expertise when needed?  
+Yes, through online resources and libraries.
 
-### Project Evaluation Using Radicality Framework
+Do you get valuable external feedback?  
+Limited. Feedback is indirect through benchmarks and community tools.
 
-Adapting evaluation types from innovation literature:
+Are you a member of relevant knowledge communities?  
+Yes. GitHub and research communities.
 
-| Evaluation Dimension | Assessment | Evidence |
-|---|---|---|
-| **Technical Radicality** | Low-Moderate | Techniques are established; novel contribution is integration and sequencing rather than fundamental breakthrough |
-| **Market Radicality** | Moderate | Targets emerging market (edge proactive agents); not addressing existing market segment |
-| **Paradigm Impact** | Low | Does not fundamentally challenge LLM-based agent paradigm; works within existing frameworks |
-| **Temporal Positioning** | Moderate-High | Enters market during growth phase; early enough to shape standards; late enough to have established infrastructure |
+**Score: 5**
 
-### Innovation Terminology Application
+***
 
-| Term | Application to Our Project |
-|---|---|
-| **Invention** | Development of specific optimization technique applications (e.g., quantization sequencing strategy) |
-| **Innovation** | Implementation and validation of optimization approach in proactive agent context; proven to deliver value |
-| **Exploitation** | Deployment of optimized proactive agents in commercial or stakeholder contexts; value realization |
-| **Diffusion** | Spreading of optimization approach through industry; standardization in frameworks; adoption by competitors |
+**Target your product’s innovation profile**  
+Can you articulate the added value for the user?  
+Yes. Lower cost enables proactive agents.
 
-### Novelty, Radicality, and Timing
+Have you determined how your product is new and original?  
+Yes. Focus on cost reduction for proactivity.
 
-**Novelty Characterization:**
-- **Technique Novelty:** Low — Individual optimization techniques well-established
-- **Application Novelty:** Moderate — Application to proactive agents represents known techniques in new context
-- **Integration Novelty:** Moderate — Sequencing and evaluation framework represents novel synthesis
+Do you understand your user community?  
+Partly. We assume users but do not deeply study them.
 
-**Radicality Assessment:**
-- **Technical Radicality:** Low — Incremental optimization; no architectural paradigm shift
-- **Business Radicality:** Moderate — Enables new market segment (edge proactive agents) but doesn't disrupt existing LLM applications
-- **Overall Radicality:** Low-to-Moderate — Incremental innovation with market-creating potential
+Do you understand how users’ lives will change?  
+Partly. Changes are expected but not validated.
 
-**Timing Characteristics:**
-- **Market Phase:** Early Growth — Proactive agent market emerging; pre-standardization
-- **Technology Lifecycle:** Maturity for optimization techniques; early adoption in applied context
-- **Positioning:** Well-timed to shape emerging standards; first-mover advantage on applied optimization research
+Do you work with the product’s innovation profile?  
+Yes. The idea is consistent across the project.
 
----
+**Score: 6**
 
-## 12. Tactics, Manifestations, and Capabilities
+***
 
-### Push vs. Pull Characterization
+**Shape your own process**  
+Do you have an innovation process strategy?  
+Yes. We follow an experiment based workflow.
 
-**Push Characteristics in Our Approach:** ✓
-- Technology-driven: We develop capabilities enabled by optimization techniques
-- Researcher-led: Academic research community defines problem and solutions
-- Supply-focused: We create availability of optimized proactive agents regardless of explicit demand
+Do you have the correct balance of market-led and technology-led strategies?  
+Mostly technology-led.
 
-**Pull Characteristics in Our Approach:** ✓
-- User-responsive: We target documented need (resource constraints in edge deployment)
-- Application-focused: Optimization justification comes from deployment context requirements
-- Demand-influenced: Edge device manufacturers' constraints drive our optimization targets
+Do you use techniques that stimulate creativity?  
+Yes. Iteration and experimentation.
 
-**Characterization:** Primary **Push** (technology-driven optimization research) with **Pull** elements (responsiveness to deployment constraints).
+Can you improvise your way out of difficulties?  
+Yes. The process is flexible.
 
-### Concrete and Abstract Manifestations
+Do you adapt your process continuously?  
+Yes. We adjust based on results.
 
-**Concrete Manifestations** (Tangible, observable artifacts):
+**Score: 6**
 
-1. **Optimized Model Artifacts**
-   - Quantized model weights (lower precision, smaller file size)
-   - Pruned model (reduced parameter count)
-   - Distilled model (smaller student network)
+***
 
-2. **Measurement Infrastructure**
-   - Profiling tools capturing memory/latency metrics
-   - Benchmark datasets for proactive agent evaluation
-   - Result dashboards showing optimization progression
+**Develop your personal creativity**  
+Are you learning fast?  
+Yes. The domain requires it.
 
-3. **Reference Implementations**
-   - GitHub repositories with optimization pipelines
-   - Docker containers with pre-optimized agents
-   - Benchmark result datasets
+Does your role suit and stimulate you?  
+Yes. Work matches our skills.
 
-**Abstract Manifestations** (Conceptual, generalizable elements):
+Can you bring your expertise to the project?  
+Yes. Strong alignment with background.
 
-1. **Optimization Principles**
-   - Technique sequencing strategy
-   - Hardware-architecture fit guidelines
-   - Accuracy preservation tradeoff curves
+Are you challenged without stress?  
+Mostly yes.
 
-2. **Methodological Contributions**
-   - Evaluation framework for proactive agent quality
-   - Decomposition of agent optimization challenges
-   - Category system for optimization technique interactions
+Are you often in flow?  
+Yes during experimentation phases.
 
-3. **Intellectual Properties**
-   - Best practices for edge agent deployment
-   - Generalized approach to resource-constrained LLM optimization
-   - Innovation model connecting technique selection to deployment context
+**Score: 6**
 
-### Concrete and Abstract Capabilities
+***
 
-**Concrete Capabilities** (Deployable, measurable functional abilities):
+**Be a super-team-worker**  
+Are you aware of factors that hinder innovation?  
+Partly. Some limitations are known.
 
-1. **Multi-Stage Optimization Pipeline Capability**
-   - Execute quantization → pruning → distillation in optimized sequence
-   - Measure effects at each stage
-   - Generate portable deployment artifacts
+Does the team improve sub optimal teamwork?  
+Partly. Informal improvements.
 
-2. **Cross-Device Optimization Capability**
-   - Profile device hardware characteristics
-   - Tailor optimization to device constraints
-   - Deploy to heterogeneous edge devices
+Does the team share a vision?  
+Yes. Clear goal.
 
-3. **Quality-Constrained Optimization Capability**
-   - Optimize while maintaining minimum accuracy thresholds
-   - Adapt technique intensity to accuracy requirements
-   - Trade performance gains against task-specific accuracy needs
+Does the team communicate effectively?  
+Yes. Small team helps.
 
-**Abstract Capabilities** (Generalizable, transferable abilities):
+Does the team handle different ideas?  
+Partly. Limited perspectives.
 
-1. **Systems Decomposition Capability**
-   - Analyze complex systems to identify optimization targets
-   - Recognize near-decomposable structures enabling staged optimization
-   - Design interfaces isolating components for independent optimization
+Do members share knowledge?  
+Yes. Continuous exchange.
 
-2. **Evidence-Based Decision-Making Capability**
-   - Formulate hypotheses about optimization effects
-   - Design experiments testing hypotheses
-   - Use empirical results to guide technique selection and parameter tuning
+**Score: 5**
 
-3. **Adaptive Design Capability**
-   - Monitor external environment for changes (new LLM architectures, hardware)
-   - Reinterpret findings in light of environmental shifts
-   - Apply abstract principles to novel contexts
+***
 
-### Evolvability and Future-Proofing Through Abstraction
+**Bring your toolbox**  
+Do you use creativity techniques?  
+Yes. Iterative testing and comparison.
 
-**How Our Abstractions Improve Evolvability:**
+Do you have the right tool support?  
+Yes. HuggingFace and optimization tools are strong.
 
-1. **Generic Optimization Interfaces**
-   - Future techniques plug into existing pipeline without architectural redesign
-   - New devices supported through hardware abstraction layer
-   - Enables graceful evolution as ecosystem changes
+**Score: 6**
 
-2. **Principle-Level Insights**
-   - Rather than techniques becoming outdated, principles guide application to next-generation architectures
-   - Sequencing principles transferable to future optimization technique combinations
-   - Evaluation framework adaptable to different agent architectures
+***
 
-3. **Decomposed Architecture**
-   - Components evolve independently; large-scale restructuring avoided
-   - Hardware-specific optimizations isolated in abstraction layers
-   - Knowledge of component interdependencies enables efficient refactoring
+**Know when you are (not) innovative**  
+Does the team recognize when it is not moving forward and change direction?  
+Yes. Results are measured and used to adjust.
 
-**Future-Proofing Specific Elements:**
+**Score: 6**
 
-| Element | Current Form | Abstraction for Future-Proofing |
-|---|---|---|
-| Optimization Stage | Quantization [specific algorithm] | Generic `CompressionStage` interface with pluggable implementations |
-| Target Model | ContextAgent (specific LLM + architecture) | Abstract `LLMAgent` interface accommodating future architectures |
-| Hardware Targets | Raspberry Pi, specific ARM SoC | Generic `EdgeDevice` profile including computational capability dimensions |
-| Success Metrics | Specific accuracy/latency thresholds | Parameterized metric framework allowing context-specific threshold definition |
+***
+
+Total: 46/56, which might indicate that the are some innovative elements in our design.
+
+### 10.4 Describe your project using the terms invention, innovation, exploitation, and diffusion
+
+**Invention**  
+The invention lies in combining proactive agent architectures with systematic cost optimization. The project creates a concrete approach for running always-on agents using compressed LLMs and low-power defer mechanisms.
+
+**Exploitation**  
+Exploitation appears in adapting known optimization techniques to practical agent settings. The work focuses on making proactive agents deployable within real cost constraints using existing tooling and infrastructure.
+
+**Diffusion**  
+Diffusion is supported through open source tooling and integration with the HuggingFace Transformers ecosystem. This makes adoption by other researchers and developers realistic, though still early.
+
+**Innovation**  
+According to Rose et al., innovation requires invention plus exploitation plus diffusion. The project clearly achieves invention and early exploitation. Diffusion is emerging but not yet widespread. This places the project at an early innovation stage, closer to research-driven innovation than full market innovation.
+
+### 10.5 Describe the novelty, radicality, and timing of your project
+
+
+## 11. Tactics, Manifestations, and Capabilities
 
 ---
 
-## 13. Merit, Dependencies and Robustness
-### Functional Completeness Discussion
-
-**Core Functional Requirements:**
-
-1. **Optimization Application** ✓
-   - Apply quantization, pruning, distillation techniques to ContextAgent
-   - Sequence techniques systematically
-   - Generate optimized model artifacts
-
-2. **Measurement and Evaluation** ✓
-   - Profile performance on target edge devices
-   - Capture accuracy metrics before and after optimization
-   - Record resource consumption (memory, latency, model size)
-
-3. **Analysis and Reporting** ✓
-   - Quantify technique effectiveness
-   - Identify optimal technique combinations
-   - Generate recommendations for deployment scenarios
-
-**Completeness Assessment:** Core functionality achieves project objectives. Exploratory extensions possible but not essential:
-
-**Reserved Elements:**
-- *Production deployment infrastructure* — Requires additional security, monitoring, versioning work beyond research scope
-- *User interface for optimization configuration* — Valuable but non-essential; command-line interfaces sufficient for research
-
-**Potential Rebuttals:**
-- *"Missing production-grade optimization framework"* — Addressed by noting project scope as research validation; productization follows research success
-- *"Incomplete hardware coverage"* — Addressed by selecting representative device classes; full hardware matrix left for industry standardization
-- *"No real-time proactive agent deployment"* — Addressed by noting focus on optimization validation; deployment testing secondary objective
-
-**Core Values Embodied in Functional Design:**
-- Reproducibility through systematic measurement
-- Generalizability through diverse device/technique testing
-- Clarity through staged, measurable progress
-
-### Robustness Assessment and Strategies
-
-**Applying Section 18.2 Strategies (Essence):**
-
-**Strategy 1: Redundancy**
-- *Application:* Multiple optimization paths tested; if one technique fails to deliver gains, others available
-- *Implementation:* Evaluate quantization, pruning, distillation on each target device
-- *Benefit:* Project persists even if single technique underperforms
-
-**Strategy 2: Fail-Safe Defaults**
-- *Application:* If optimization produces unacceptable accuracy loss, revert to less aggressive parameters
-- *Implementation:* Automated accuracy-check gates; step-back behavior if thresholds violated
-- *Benefit:* Prevents accidental deployment of broken optimizations
-
-**Strategy 3: Graceful Degradation**
-- *Application:* If device target becomes unavailable, optimization tested on alternative hardware
-- *Implementation:* Establish primary and secondary device targets
-- *Benefit:* Hardware availability changes don't halt project
-
-**Strategy 4: Compartmentalization**
-- *Application:* Isolate optimization stages; failure in one stage halts that stage but doesn't corrupt prior stages
-- *Implementation:* Clear stage output interfaces; data independence between stages
-- *Benefit:* Enables debugging and recovery from technique failures
-
-**Recommended Robustness Strategy Focus:** Combination of Redundancy (multiple techniques tested) + Fail-Safe Defaults (accuracy gates) + Compartmentalization (stage isolation).
-
-### Dependencies in Our Design
-
-**Applying Section 18.3 Strategies (Essence):**
-
-**Tier 1: Critical Dependencies**
-- *ContextAgent availability* — Seed paper implementation accessible and reproducible
-- *Target device access* — Ability to test on Raspberry Pi, smartphone, or similar edge devices
-- *Optimization frameworks* — PyTorch, ONNX, TensorRT providing technique implementations
-
-**Tier 2: Important Dependencies**
-- *Benchmark datasets* — Standard evaluation data for proactive agent quality assessment
-- *Research literature* — Prior work on optimization technique combinations
-- *Community tools* — Profiling tools, visualization frameworks
-
-**Tier 3: Supporting Dependencies**
-- *Compute resources* — GPU access for training phase (distillation)
-- *CI/CD infrastructure* — Automated testing pipeline
-- *Documentation resources* — Guidance on framework APIs
-
-### Dependency Management Strategy (Section 18.3)
-
-| Dependency | Type | Mitigation Strategy |
-|---|---|---|
-| ContextAgent availability | Critical | Develop against multiple agent implementations if seed paper unavailable |
-| Target device access | Critical | Establish partnerships with device manufacturers; use cloud edge services as fallback |
-| Framework availability | Critical | Implement fallback using lower-level APIs; avoid framework-specific proprietary features |
-| Benchmark data | Important | Establish data collection protocol for proactive agent evaluation if standard data unavailable |
-| Literature availability | Important | Conduct original empirical exploration if prior work insufficient |
-| Compute resources | Important | Prioritize efficient GPU usage; use free tier cloud resources (Colab, Kaggle) |
-| CI/CD | Supporting | Manual testing acceptable if automation unavailable; invest in automation for efficiency gains |
-
-**Recommended Dependency Management:** High priority on critical dependencies (partnerships, alternative implementations); accept supporting dependency limitations if necessary.
+## 12. Merit, Dependencies and Robustness
 
 ### ETVX Model for Robustness and Dependencies (Section 18.4)
-
-**Entry:** Technique candidates identified; device targets confirmed; framework environments verified
-
-**Task:** Apply optimization pipeline to confirmed candidates on confirmed targets using confirmed frameworks
-
-**Verification:**
-- *Accuracy Checkpoint:* Does optimized model maintain ≥90% of baseline accuracy?
-- *Performance Checkpoint:* Does optimization achieve ≥20% model size reduction or ≥30% latency improvement?
-- *Reproducibility Checkpoint:* Can optimization be reproduced on alternative devices with similar results?
-
-**Exit:** Optimization successful if all checkpoints pass; stage-specific analysis if any checkpoint fails
-
-**Process Reliability:** Multiple techniques ensure project can advance even if single technique fails verification; redundant device testing ensures environmental variability doesn't halt project.
 
 ---
 
@@ -939,24 +737,4 @@ This report applies the Problem-Solution Canvas methodology to our semester proj
 
 The PSC framework has proved valuable in structuring our thinking across multiple dimensions—from granular technical decisions about optimization sequencing to strategic considerations about market timing and long-term positioning. This multi-perspective analysis supports both our immediate execution planning and our longer-term horizon understanding.
 
-As we proceed, the PSC framework will serve as a touchstone for evaluating when project conditions have shifted sufficiently to warrant reanalysis and reconceptualization of aspects of our approach.
-
----
-
-## References
-
-Essence. [Your professor's course materials - insert specific page/chapter references]
-
-Hevner, A., & Gregor, S. (2022). *Undertaking Rigorous Design Science Research—Challenges, Strategies, and Solutions.* [Insert publication details]
-
-Cynefin Framework. [Insert reference to Cynefin model as used in course]
-
-ContextAgent Research. [Insert reference to seed paper and related literature]
-
----
-
-## Appendices
-
-### Appendix A: Problem-Solution Canvas Template (Completed)
-
-[Create a formatted table version of the PSC with your completed cells from the exercises above]
+As we proceed, the PSC framework will serve as a touchstone for evaluating when project conditions have shifted sufficiently to warrant reanalysis and reconceptualization of aspects of our approach.   
