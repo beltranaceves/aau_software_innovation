@@ -4,15 +4,28 @@
 
 **Study program**: CS-IT-09
 
-**Date:** 12/05/2026
+**Date:** 13/05/2026
+
+![Problem-Solution Canvas](image.png)
 
 ---
 
 ## Table of Contents
-
-0.
-1.
-2.
+- [0. Project Description](#0-project-description)
+- [1. Innovation Opportunities](#1-innovation-opportunities)
+- [2. Innovation in our project](#2-innovation-in-our-project)
+- [3. Selecting a Fulcrum](#3-selecting-a-fulcrum)
+- [4. Problem Scenarios](#4-problem-scenarios)
+- [5. Leverage Scenarios](#5-leverage-scenarios)
+- [6. Solution Scenarios](#6-solution-scenarios)
+- [7. Horizon](#7-horizon)
+- [8. Strategy and Outer Environment](#8-strategy-and-outer-environment)
+- [9. Inner Environment](#9-inner-environment)
+- [10. Evolvability and General Innovation Theory](#10-evolvability-and-general-innovation-theory)
+- [11. Tactics, Manifestations and Capabilities](#11-tactics-manifestations-and-capabilities)
+- [12. Merit](#12-merit)
+- [Use of generative AI](#a-note-on-the-use-of-generative-ai)
+- [Thoughts](#thoughts-on-essence-the-problem-solution-canvas-and-the-lectures)
 
 ---
 
@@ -31,7 +44,7 @@ Implementations of this emerging paradigm have recently started to appear, but r
 
 - LLMs are incresingly popular. Both the effort and capital invested into them from both academia and industry keeps growing, as well as their user bases.
 TODO: add chart for AI funding
-- LLM-based agents like [Claude Code](https://code.claude.com/docs/en/overview), [OpenClaw](https://openclaw.ai/) or [Codex](https://openai.com/codex/) have amassed vocal and enthusiastic communities, stimulating further development in this paradigm.
+- LLM-based agents like Claude Code, OpenClaw or Codex have amassed vocal and enthusiastic communities, stimulating further development in this paradigm.
 TODO: add chart with gh stars for openclaw
 - We are going through a period of explotion in this domain, and many companies and institutions are trying to uncover the next evolution in this space.
 
@@ -210,7 +223,7 @@ In this context, we learn through structured experimentation: form a hypothesis 
 |  | **Affordable** | **Costly** |
 |---|---|---|
 | **Reactive** | Orchestration and coordination | Infrastructure scaling |
-| **Proactive** | Scaling and diffusion | Cost reduction and efficiency ← **Our Focus** |
+| **Proactive** | Scaling and diffusion | Cost reduction and efficiency |
 
 ### 4.4 Choose one problem to work with from now on 
 
@@ -261,8 +274,6 @@ Current LLM-based AI systems only work as a response of an user's inquiry and pr
 | **Open source contributors (Human resources)** | 5/10 | 2/10 | 3/10 | 2/10 | -2 |
 
 ### 5.3 Develop axes for the Leverage Scenarios as described in Section 7.3
-
-### 5.3 Develop axes for Leverage Scenarios
 
 **Vertical Axis: WHO**
 - *Seed Papers* — Theoretical foundation; research publications validating compression techniques
@@ -716,25 +727,218 @@ Exploitation appears in adapting known optimization techniques to practical agen
 Diffusion is supported through open source tooling and integration with the HuggingFace Transformers ecosystem. This makes adoption by other researchers and developers realistic, though still early.
 
 **Innovation**  
-According to Rose et al., innovation requires invention plus exploitation plus diffusion. The project clearly achieves invention and early exploitation. Diffusion is emerging but not yet widespread. This places the project at an early innovation stage, closer to research-driven innovation than full market innovation.
+According to Rose et al. (p16 + p37-42), innovation requires invention plus exploitation plus diffusion. The project clearly achieves invention and early exploitation. Diffusion is emerging but not yet widespread. This places the project at an early innovation stage, closer to research-driven innovation than full market innovation.
 
 ### 10.5 Describe the novelty, radicality, and timing of your project
 
+**Novelty:** Medium. The techniques are known, but their application to proactive agents and agent loops is new.
+
+**Radicality:** Incremental. The project improves existing systems rather than replacing them, so it's focused. It enables change through cost reduction, rather than a complete paradigm shift, so the level of innovation is not high.
+
+**Timing:** Early. Proactive agents are emerging but limited by cost, there is no generalized user demand. Optimization arrives early enough to influence adoption before the paradigm is fixed.
 
 ## 11. Tactics, Manifestations, and Capabilities
 
+### 11.1 Will you characterize your approach as push or pull?
+
+We consider it to be primarily technology push.
+We start from new interaction possibilities and explore what problems they enable us to solve.
+There is a weak pull element, since cost is already a known issue in proactive agents, but the main driver is still the availability of cost-permissive proactive agents.
+
+### 11.2 Describe concrete and abstract manifestations
+**Concrete manifestations:**
+- Continuous model execution even when no action is taken
+- High GPU usage and cost from agent loops
+- Limited deployment due to resource constraints
+- Reactive interaction still dominating usage
+
+**Abstract manifestations:**
+- Inefficient resource utilization in proactive systems
+- Economic infeasibility of always-on agents
+- Weak alignment between agent behavior and deployment constraints
+- Lack of a scalable model for proactivity
+
+### 11.3 Describe concrete and abstract capabilities
+**Concrete capabilities:**
+- Quantization, pruning, distillation applied to models
+- Reduced memory footprint and compute requirements
+- Faster inference and lower latency
+- Deferred execution instead of constant looping
+
+**Abstract capabilities:**
+- Cost-efficient proactivity
+- Ability to scale agents across environments
+- Decoupling of monitoring, decision, and execution
+- General and modular optimization layer across models and systems
+
+### 11.4 Will your abstractions improve evolvability and make your design future-proof? How?
+Yes, to some extent.
+We focus on general optimization principles instead of specific models or tools. This avoids tight coupling to a single architecture.
+The design is modular. Optimization techniques can be swapped or extended without redesigning the system.
+By working at the level of HuggingFace and similar abstractions, improvements transfer across many models.
+This does not make the system fully future-proof. New architectures can still reduce how relevant we are, or the ecosystem might move away from HF Transformers. But the abstractions increase the chance that parts of the design remain useful as the field changes.
+
 ---
 
-## 12. Merit, Dependencies and Robustness
+## 12. Merit
 
-### ETVX Model for Robustness and Dependencies (Section 18.4)
+### 12.1 Discuss the functional completeness of your design and state reservations, rebuttals, and values accordingly.
+
+The design is functionally complete at the level we target.
+Our manifestations are mostly about cost and inefficiency in proactive agents, and our capabilities directly address them through compression and deferred execution. There is a clear mapping between the two, so the core problem is covered.
+
+**Values**
+- Lower cost enables deployment of proactive agents
+- Maintains acceptable performance while reducing resources
+- Works across models through abstraction at the HF level
+
+**Reservations**
+- We do not guarantee that proactivity quality is preserved after optimization
+- We depend on existing models, so we cannot fix their inherent limitations
+- No strong validation of real user demand for proactive behavior
+
+**Rebuttals**
+- The goal is position innovation, not a full redesign, so limits are expected
+- Partial preservation of accuracy is acceptable if cost drops significantly
+- Early proof of feasibility is enough at this stage even without strong demand evidence
+
+### 12.2 Discuss the robustness of your design and assess if any of the strategies in section 18.2 would be helpful.
+We consider robustness to be low or moderate. The system works under expected conditions but is sensitive to optimization side effects and model behavior. It is more prepared for change than for runtime failure.
+
+**Architectural**
+- Near-decomposability is strong. The pipeline stages are loosely coupled, so failures in one stage do not propagate easily
+- Graceful degradation is limited. We do not ensure that core functionality is preserved if an optimization harms performance
+- Cognitive load is not relevant since the system is not user-facing
+- Automation with user control exists in a basic form. We can remove or adjust stages, but this is manual
+- Error prevention and recovery is weak. We log results but do not guide correction or rollback
+
+**Operational**
+- Continuous monitoring is present through metric logging and evaluation. This helps detect degradation early
+- Stress testing is limited. We mostly test on controlled benchmarks, not on varied or realistic workloads
+- Alternative pathways are not implemented. There is no automatic fallback to safer configurations
+
+**Adaptive**
+- Self-healing is not present. The system does not react automatically to failures
+- Predictive analytics is minimal. We observe results but do not anticipate failures
+- Interface-related strategies are not relevant for this system
+
+### 12.3 Outline dependencies in your design and assess the utility of the strategies in section 18.3.
+The design depends on several external and internal components. These create clear vulnerabilities:
+
+**External dependencies**
+- HuggingFace models and ecosystem
+- Optimization libraries (GPTQ, Ollama, etc.)
+-  Compute infrastructure (GPU, cluster access)
+- Open-source tools and research
+
+**Likelihood**
+- High. The LLM ecosystem changes fast. APIs, model formats, or libraries can break compatibility
+- External tools are actively maintained, so breaking changes are realistic
+
+**Impact**
+- Direct: pipeline may fail, or optimizations stop working
+- Indirect: results become outdated, reducing relevance of the project
+
+***
+
+**Internal dependencies**
+- Compression pipeline stages
+- Evaluation setup and metrics
+- Custom dataset and benchmarks
+
+**Likelihood**
+- Medium. We control these, but interaction effects between stages are uncertain
+
+**Impact**
+- Direct: incorrect measurements or misleading results
+- Indirect: wrong conclusions about optimization trade-offs
+
+***
+
+**Assessment of strategies**
+
+**External components**
+
+- Abstraction layers are already used through HF. This reduces coupling and makes replacement possible
+- Fallback and graceful degradation are missing. This would be useful if a library or model fails or is no longer compatible
+
+**Internal components**
+
+- Modularity and near-decomposition are strong. Pipeline stages are separated
+- Separation of concerns is present. Each stage has a clear role
+- Abstractions are used, but still somewhat tied to specific tools or ecosystems
+
+### 12.4 Use ETVX (section 18.4) to model robustness and dependencies.
+
+```
+
+                       ┌───────────────────────────────┐
+                       │ External Models / Libraries   │
+                       │ (Black-box ETVX)              │
+                       │ ----------------------------- │
+                       │ HuggingFace models            │
+                       │ GPTQ, Ollama                  │
+                       │ Not under our control         │
+                       └──────────────┬────────────────┘
+                                      │
+                                      ▼
+    ┌─────────────────────────────────────────────────────────────┐
+    │                Agent System (ETVX Cell)                     │
+    ├──────────────┬────────────────────┬────────────────┬────────┤
+    │ ENTRY        │ TASK               │ VALIDATION     │ EXIT   │
+    │--------------│--------------------│----------------│--------│
+    │ High GPU     │ Opportunity detect │ Detect useful  │ Trigger│
+    │ cost         │        ↓           │ actions        │pipeline│
+    │ Continuous   │ Context → Decision │ Avoid excess   │        │
+    │ loop         │ → Execution →      │ compute        │        │
+    │ No affordable│ Results            │                │        │
+    │ proactivity  │        │           │                │        │
+    │              │   ┌────┴────┐      │                │        │
+    │              │   │ Act     │──────┘                │        │
+    │              │   │ (loop)  │                       │        │
+    │              │   └─────────┘                       │        │
+    │              │   Defer → low-power state           │        │
+    └──────────────┴──────────────┬──────────────────────┴────────┘
+                                  │
+                                  ▼
+    ┌─────────────────────────────────────────────────────────────┐
+    │           Optimization Pipeline (ETVX Cell)                 │
+    ├──────────────┬────────────────────┬────────────────┬────────┤
+    │ ENTRY        │ TASK               │ VALIDATION     │ EXIT   │
+    │--------------│--------------------│----------------│--------│
+    │ Model +      │ Quantization →     │ Measure latency│ Optimi-│
+    │ workload     │ Pruning →          │ Measure acc.   │ zed    │
+    │              │ Distillation       │ Compare base   │ model  │
+    │              │                    │                │        │
+    │              │ ↑ depends on       │                │        │
+    │              │ external component │                │        │
+    └──────────────┴──────────────┬─────┴────────────────┴────────┘
+                                  │
+                                  ▼
+            ┌──────────────────────────────────────────┐
+            │ Deployment / Value                       │
+            │ - Deploy in agent loop                   │
+            │ - Monitor performance                    │
+            │ - Reduced cost                           │
+            │ - Acceptable accuracy                    │
+            │ - No automatic fallback                  │
+            │ - Manual rollback                        │
+            └───────────────┬──────────────────────────┘
+                            │
+                            └──────────── back to Agent
+```
 
 ---
 
-## Conclusion
+## A note on the use of generative AI
+I generally dislike making use of generative ai to write reports, because if I didn't bother to write it, why should anyone else bother to read it.
+However, I ended up using the university provided access to Copilot for sections 10.4, 10.5 and 12.4. I did not know how to progress, and by feeding it papers and snippets of Essence I was able to work through those sections.
 
-This report applies the Problem-Solution Canvas methodology to our semester project optimizing proactive LLM agents. Through systematic analysis of innovation opportunities, problem characterization, leverage points, solution approaches, and strategic considerations, we have developed a comprehensive mental model of our project within its technical, market, and organizational contexts.
+## Thoughts on Essence, the Problem-Solution Canvas, and the lectures
 
-The PSC framework has proved valuable in structuring our thinking across multiple dimensions—from granular technical decisions about optimization sequencing to strategic considerations about market timing and long-term positioning. This multi-perspective analysis supports both our immediate execution planning and our longer-term horizon understanding.
-
-As we proceed, the PSC framework will serve as a touchstone for evaluating when project conditions have shifted sufficiently to warrant reanalysis and reconceptualization of aspects of our approach.   
+- I enjoy that the Problem-Solution Canvas provides a fairly simple structure that incentivices developers to ask the right questions about their project without having to follow a strict method. Not having a fixed interview process or steps gives the feeling that it could be applied to way more projects.
+- Some of the cells and the questions one has to answer to fill them feel quite familiar if you have some software engineering experience, and I like that they incorporate notions of software design, project management and team coordination in an implicit way.
+- The VUCA and the *learn* activity are the sections with the steepest apparent learning curve. I would like to see less generic statements in those cells for the ClusterDetect example.
+- If I remember correctly, it is encouraged to use the Problem-Solution Canvas throughout the development of a project, and take advantage of its simple structure to reconsider key aspects of a problem or solution in the face of new factors. However, there's is no explicit mechanism for capturing them, the decision-making process or the nature of the change. You may have omitted that on purpose, but it struck me as odd.
+- The latter sessions are more difficult to follow, with significantly more theory requirements behind the statements made.
+- Some concepts like General Innovation Theory are somewhat loosely explained, and the access to some of the material is restricted, like the paper on Innovative Software Product Assessment.

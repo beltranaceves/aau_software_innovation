@@ -1,0 +1,16 @@
+@page {
+  margin: 25mm;
+}
+
+body {
+  font-family: Arial;
+}
+
+.page {
+  page-break-after: always;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
