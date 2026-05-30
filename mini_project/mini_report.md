@@ -2,7 +2,7 @@
 
 **Author**: Beltrán Aceves Gil
 
-**Study program**: CS-IT-09
+**Study program**: CS-IT-08
 
 **Date:** 13/05/2026
 
