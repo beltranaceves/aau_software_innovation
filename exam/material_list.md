@@ -61,15 +61,26 @@
 
 ---
 
+## VUCA
+- Volatility: conditions that change rapidly or unpredictably.
+- Uncertainty: needs and solutions that are unsettled.
+- Complexity: external or internal parts that form intricate meshes
+- Ambiguity: causes and effects that are mixed up.
+
+- Strategies for Outer Environments:
+![Strategies for Outer Environments](VUCA_outer.png)
+- Strategies for Inner Environments:
+![Strategies for Inner Environments](VUCA_inner.png)
 ## Cells
 - Perception:
     - Problem: A problem reflects an understanding of a situation. Problems have no objective status. 
         - We see a problem as a situation to be handled, where problems appear as manifestations.
     - Outer Environment: The surroundings in which our problem resides and where the contributions we design will operate. 
         - The problem is found in the outer environment. The design is adapted to this domain.
-        - 
-        -
-        -
+        - External services: Services that are used without modification and reduce what is left for us to deal with.
+        - External implements: Equipment, sensors, or actuators available in the outer environment and accessed via trivial interfaces.
+        - External repositories: Repositories for collecting, storing, disseminating, and/or aggregating information via trivial interfaces.
+        - External people: Generally available people, professionals, stakeholders, authorities, networks, organizations, etc.
     - Manifestations: An object, event, or action that reflects or gives a tangible or visible form to the problem. 
         - Manifestations are objects, actions, or events that reflect or embody the problem.
             - Abstract
@@ -104,8 +115,14 @@
 - Learning:
     - Horizon: Where might the outcomes of this project lead us? How do they align with the future we aim to be a part of?
         - H1: business as usual, daily operations
-        - H2: 
-        - H3: long-term future
+        - H2: shift and clash of ideas into the future
+        - H3: long-term emergence of patterns
+        - Horizon hypotheses:
+            - Rationale hypotheses:
+            - Horizon hypotheses:
+                - Mission EIV
+                - Horizon EIV
+
     - Potential: The potential defines the project's strategic objective: to create strenghts and opportunities.
         - 
     - Mission: The mission presents the project's tactical objective: to solve the problem.
