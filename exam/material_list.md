@@ -67,13 +67,25 @@
         - We see a problem as a situation to be handled, where problems appear as manifestations.
     - Outer Environment: The surroundings in which our problem resides and where the contributions we design will operate. 
         - The problem is found in the outer environment. The design is adapted to this domain.
+        - 
+        -
+        -
     - Manifestations: An object, event, or action that reflects or gives a tangible or visible form to the problem. 
         - Manifestations are objects, actions, or events that reflect or embody the problem.
+            - Abstract
+            - Concrete
 - Forming:
     - Leverage: Keystones of the inner environment that help create a great contribution.
         - Leverage points allow for the most valuable capabilities.
+        - Technolology: Scientific knowledge, machinery, and equipment on which a design might be based.
+        - Components: Rare equipment, sensors, or actuators used actively in building a solution and accessed via crafted interfaces.
+        - Information: Used for collecting, storing, disseminating, and/or aggregating information to be accessed via crafted interfaces.
+        - Human resources: Specific users, categories of users, experts, authorities, social or professional net- works, organizations, or others with particular roles or functions designed to build a solution. Cyberhuman systems are prominent examples of systems where internal people are leverage points.
     - Inner Environment:  The substance and organization of what we design and implement.
         - The inner environment is what provides the capabilities.
+        -
+        -
+        -
     - Capabilities: An ability or facility devised to handle manifestations as part of a solution that provides value. 
         - Capabilities are the features that are designed to address manifestations.
     
@@ -91,17 +103,36 @@
         - Rebuttal
 - Learning:
     - Horizon: Where might the outcomes of this project lead us? How do they align with the future we aim to be a part of?
+        - H1: business as usual, daily operations
+        - H2: 
+        - H3: long-term future
     - Potential: The potential defines the project's strategic objective: to create strenghts and opportunities.
+        - 
     - Mission: The mission presents the project's tactical objective: to solve the problem.
     
 
 
 ## Context Types
+- Simple: known knowns, clear causes and effect. Sense, categorize and respond.
+- Complicated: known unknowns, clear cause and effect are discoverable but not obvious to anyone. Sense, analyze and respond.
+- Complex: unknown unknowns, cause and effect can only be deduced in retrospect. Probe, sense and respond.
+- Chaotic: unknowable unknowns, no cause and effect relationships can be established, just emergent patterns. Act, sense and respond.
+
 
 - Philosophers and main points
 - Definitions of innovation
 - Types of innovation?
 
+## Scenarios
+Made up of axes
+    - Why/Who?
+    vs
+    - What/Where/When/How/How much?
+
+## Analysis
+- PCRT: Power, Cost, Risk, Time
+    - Qualitative
+    - Quantitative
 
 
 - Digital Innovation Defined
@@ -119,7 +150,20 @@ value
 - Innovation window:
 
 ## Philosophy
-- Dewey
+- John Dewey: Pragmatism #TODO
+    - Means: instruments used to attain an end
+        - Material
+        - Procedural
+    - End: 
+    - End-in-view: is an idea of an end to be reached at the current point in time, the consequence of taking a step towards an end.
+        - Mission EIV
+        - Horizon EIV
+    - Idea (hypothesis): 
+    - Suggestion
+    - Transaction (back-talk): the process of testing an idea by acting on it and observing the consequences
+    - Inquiry: controller transformation of an indeterminate situation into a determinate one so that its elements form an unified whole.
+        - Transactionsl, open-ended and inherently social
+        - Ideational and existential operations
 - Donal Schön
 - Theory-ladden?
 
